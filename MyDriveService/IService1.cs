@@ -61,6 +61,7 @@ namespace MyDriveService
     public interface IAccessService
     {
 
+  
         [OperationContract]
         AnswerCode UserRegistration(User user);
 
@@ -70,7 +71,7 @@ namespace MyDriveService
 
     }
 
-
+    [ServiceContract]
     public interface IStorrageService
     {
 
