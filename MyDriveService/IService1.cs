@@ -8,7 +8,7 @@ using System.Text;
 
 namespace MyDriveService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
+    
 
     [DataContract]
     public enum AnswerCode{
@@ -28,6 +28,32 @@ namespace MyDriveService
         [MessageBodyMember]
         public List<StorageFile> Files { get; set; }
 
+
+        public AnswerResponse SetResponse(AnswerCode code, List<StorageFile> files, string message)
+        {
+   
+            this.Code = code;
+            this.Files.AddRange(files);
+            this.Message = message;
+            return this;
+        }
+       
+        public AnswerResponse SetResponse(AnswerCode code, StorageFile file, string message)
+        {
+
+            this.Code = code;
+            this.Files.Add(file);
+            this.Message = message;
+            return this;
+        }
+
+        public AnswerResponse SetResponse(AnswerCode code, string message)
+        {
+
+            this.Code = code;
+            this.Message = message;
+            return this;
+        }
     }
 
 
