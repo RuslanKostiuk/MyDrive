@@ -1,0 +1,10 @@
+C:\Users\s25-r1\source\repos\MyDriveService\MyDriveClient\bin\Debug\MyDriveClient.exe.config
+C:\Users\s25-r1\source\repos\MyDriveService\MyDriveClient\bin\Debug\MyDriveClient.exe
+C:\Users\s25-r1\source\repos\MyDriveService\MyDriveClient\bin\Debug\MyDriveClient.pdb
+C:\Users\s25-r1\source\repos\MyDriveService\MyDriveClient\obj\Debug\MyDriveClient.csprojResolveAssemblyReference.cache
+C:\Users\s25-r1\source\repos\MyDriveService\MyDriveClient\obj\Debug\MyDriveClient.Form1.resources
+C:\Users\s25-r1\source\repos\MyDriveService\MyDriveClient\obj\Debug\MyDriveClient.Properties.Resources.resources
+C:\Users\s25-r1\source\repos\MyDriveService\MyDriveClient\obj\Debug\MyDriveClient.csproj.GenerateResource.Cache
+C:\Users\s25-r1\source\repos\MyDriveService\MyDriveClient\obj\Debug\MyDriveClient.csproj.CoreCompileInputs.cache
+C:\Users\s25-r1\source\repos\MyDriveService\MyDriveClient\obj\Debug\MyDriveClient.exe
+C:\Users\s25-r1\source\repos\MyDriveService\MyDriveClient\obj\Debug\MyDriveClient.pdb

@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDriveService", "MyDriveService\MyDriveService.csproj", "{39272CFD-FD4A-469A-A48C-AE6B2B20CF96}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDriveClient", "MyDriveClient\MyDriveClient.csproj", "{E11196A2-C43C-4CEA-9999-BB2842475EBB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{39272CFD-FD4A-469A-A48C-AE6B2B20CF96} = {39272CFD-FD4A-469A-A48C-AE6B2B20CF96}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
