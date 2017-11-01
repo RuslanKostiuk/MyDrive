@@ -1,0 +1,11 @@
+C:\Users\s25-r1\source\repos\MyDriveService\MyDriveService\bin\MyDriveService.dll.config
+C:\Users\s25-r1\source\repos\MyDriveService\MyDriveService\bin\MyDriveService.dll
+C:\Users\s25-r1\source\repos\MyDriveService\MyDriveService\bin\MyDriveService.pdb
+C:\Users\s25-r1\source\repos\MyDriveService\MyDriveService\bin\EntityFramework.dll
+C:\Users\s25-r1\source\repos\MyDriveService\MyDriveService\bin\EntityFramework.SqlServer.dll
+C:\Users\s25-r1\source\repos\MyDriveService\MyDriveService\bin\EntityFramework.xml
+C:\Users\s25-r1\source\repos\MyDriveService\MyDriveService\bin\EntityFramework.SqlServer.xml
+C:\Users\s25-r1\source\repos\MyDriveService\MyDriveService\obj\Debug\MyDriveService.csproj.CoreCompileInputs.cache
+C:\Users\s25-r1\source\repos\MyDriveService\MyDriveService\obj\Debug\MyDriveService.dll
+C:\Users\s25-r1\source\repos\MyDriveService\MyDriveService\obj\Debug\MyDriveService.pdb
+C:\Users\s25-r1\source\repos\MyDriveService\MyDriveService\obj\Debug\MyDriveService.csprojResolveAssemblyReference.cache

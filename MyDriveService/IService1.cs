@@ -16,43 +16,48 @@ namespace MyDriveService
         [EnumMember] Failed,
     }
 
-    [MessageContract]
+    [DataContract]
     public class AnswerResponse
     {
-        [MessageHeader]
+        [DataMember]
         public AnswerCode Code { get; set; }
 
-        [MessageHeader]
+        [DataMember]
         public string Message { get; set; }
 
-        [MessageBodyMember]
+        [DataMember]
         public List<StorageFile> Files { get; set; }
 
 
-        public AnswerResponse SetResponse(AnswerCode code, List<StorageFile> files, string message)
-        {
-   
-            this.Code = code;
-            this.Files.AddRange(files);
-            this.Message = message;
-            return this;
-        }
-       
-        public AnswerResponse SetResponse(AnswerCode code, StorageFile file, string message)
-        {
+    }
 
-            this.Code = code;
-            this.Files.Add(file);
-            this.Message = message;
-            return this;
+    public static class AnswerResponceSetter
+    {
+        
+        public static AnswerResponse SetResponse(AnswerCode code, List<StorageFile> files, string message)
+        {
+            AnswerResponse response = new AnswerResponse();
+            response.Code = code;
+            response.Files.AddRange(files);
+            response.Message = message;
+            return response;
         }
 
-        public AnswerResponse SetResponse(AnswerCode code, string message)
+        public static AnswerResponse SetResponse(AnswerCode code, StorageFile file, string message)
         {
+            AnswerResponse response = new AnswerResponse();
+            response.Code = code;
+            response.Files.Add(file);
+            response.Message = message;
+            return response;
+        }
 
-            this.Code = code;
-            this.Message = message;
-            return this;
+        public static AnswerResponse SetResponse(AnswerCode code, string message)
+        {
+            AnswerResponse response = new AnswerResponse();
+            response.Code = code;
+            response.Message = message;
+            return response;
         }
     }
 
@@ -76,7 +81,7 @@ namespace MyDriveService
     {
 
         [OperationContract]
-        AnswerResponse Create(List<byte> file,string path);
+        AnswerResponse Create(List<byte> file, string path);
 
         [OperationContract]
         AnswerResponse Delete(string name);
