@@ -10,3 +10,14 @@ C:\Users\s25-r1\source\repos\MyDriveService\MyDriveClient\obj\Debug\MyDriveClien
 C:\Users\s25-r1\source\repos\MyDriveService\MyDriveClient\obj\Debug\MyDriveClient.EnterForm.resources
 C:\Users\s25-r1\source\repos\MyDriveService\MyDriveClient\obj\Debug\MyDriveClient.RegistrationForm.resources
 C:\Users\s25-r1\source\repos\MyDriveService\MyDriveClient\obj\Debug\MyDriveClient.csprojResolveAssemblyReference.cache
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveClient\bin\Debug\MyDriveClient.exe.config
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveClient\bin\Debug\MyDriveClient.exe
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveClient\bin\Debug\MyDriveClient.pdb
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveClient\obj\Debug\MyDriveClient.csprojResolveAssemblyReference.cache
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveClient\obj\Debug\MyDriveClient.EnterForm.resources
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveClient\obj\Debug\MyDriveClient.Form1.resources
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveClient\obj\Debug\MyDriveClient.Properties.Resources.resources
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveClient\obj\Debug\MyDriveClient.RegistrationForm.resources
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveClient\obj\Debug\MyDriveClient.csproj.GenerateResource.Cache
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveClient\obj\Debug\MyDriveClient.exe
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveClient\obj\Debug\MyDriveClient.pdb

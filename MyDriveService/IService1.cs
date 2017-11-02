@@ -140,6 +140,9 @@ namespace MyDriveService
 
         [OperationContract]
         AnswerResponse Search(string path);
+
+        [OperationContract]
+        AnswerResponse OpenFolder(string path);
     }
 
 

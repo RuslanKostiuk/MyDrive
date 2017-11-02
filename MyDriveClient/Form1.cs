@@ -27,20 +27,33 @@ namespace MyDriveClient
 
             new EnterForm(this).ShowDialog();
             this.Hide();
-            base_address = @"root/" + user.Login;
-           treeView1.Nodes.AddRange(InitializeTreeView(base_address).ToArray());
+            base_address = @"C:\Users\Ruslanchik\Desktop\DriveRepositiry/" + user.Login;
+           // base_address = @"root/" + user.Login;
+            treeView1.Nodes.AddRange(InitializeTreeView(base_address).ToArray());
         }
 
         private List<TreeNode> InitializeTreeView(string path)
         {
             List<TreeNode> nodes = new List<TreeNode>();
-            clientStorrage.ReadAll(path).Files.Select(file => file.Name).ToList().ForEach(item => nodes.Add(new TreeNode() { Text = item }));
-            return nodes;
+            try
+            {
+                clientStorrage.OpenFolder(path).Files.Select(file => file.Name).ToList().ForEach(item => nodes.Add(new TreeNode() { Text = item }));
+                return nodes;
+            }
+            catch { return null; }
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            e.Node.Nodes.AddRange(InitializeTreeView(e.Node.FullPath).ToArray());
+            var folders = InitializeTreeView(e.Node.FullPath);
+
+            if(folders!=null)
+                e.Node.Nodes.AddRange(folders.ToArray());
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

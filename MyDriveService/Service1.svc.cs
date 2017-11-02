@@ -38,7 +38,7 @@ namespace MyDriveService
             {
                 var _user = db.Users.Add(user);
                 db.SaveChanges();
-                Directory.CreateDirectory(@"root/"+ user.Login); 
+                Directory.CreateDirectory(@"C:\Users\Ruslanchik\Desktop\DriveRepositiry/"+ user.Login); 
                 return AnswerResponceSetter.SetUserResponse(
                     AnswerCode.Complete,
                     _user,
@@ -179,14 +179,30 @@ namespace MyDriveService
             }
 
         }
+
+        public AnswerResponse OpenFolder(string path)
+        {
+            try
+            {
+                List<StorageFile> folders = new List<StorageFile>();
+                Directory.GetDirectories(path).ToList().ForEach(
+                    directory => folders.Add(new StorageFile() { Name = directory })
+                    );
+
+                return AnswerResponceSetter.SetResponse(
+                    AnswerCode.Complete,
+                    folders,
+                    "folders in folder"
+                    );
+            }catch(Exception ex)
+            {
+                return AnswerResponceSetter.SetResponse(AnswerCode.Failed, ex.Message);
+            }
+        }
     }
 
 
-    //public class StorageService : IStorrageService
-    //{
 
-       
-    //}
 
 
 }

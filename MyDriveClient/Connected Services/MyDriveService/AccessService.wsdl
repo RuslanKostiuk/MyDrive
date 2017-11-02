@@ -62,6 +62,18 @@
   <wsdl:message name="IStorrageService_GetAllSpace_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllSpaceResponse" />
   </wsdl:message>
+  <wsdl:message name="IStorrageService_Search_InputMessage">
+    <wsdl:part name="parameters" element="tns:Search" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_Search_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_OpenFolder_InputMessage">
+    <wsdl:part name="parameters" element="tns:OpenFolder" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_OpenFolder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OpenFolderResponse" />
+  </wsdl:message>
   <wsdl:portType name="IAccessService">
     <wsdl:operation name="UserRegistration">
       <wsdl:input wsaw:Action="http://tempuri.org/IAccessService/UserRegistration" message="tns:IAccessService_UserRegistration_InputMessage" />
@@ -100,6 +112,14 @@
     <wsdl:operation name="GetAllSpace">
       <wsdl:input wsaw:Action="http://tempuri.org/IStorrageService/GetAllSpace" message="tns:IStorrageService_GetAllSpace_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IStorrageService/GetAllSpaceResponse" message="tns:IStorrageService_GetAllSpace_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStorrageService/Search" message="tns:IStorrageService_Search_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStorrageService/SearchResponse" message="tns:IStorrageService_Search_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OpenFolder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStorrageService/OpenFolder" message="tns:IStorrageService_OpenFolder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStorrageService/OpenFolderResponse" message="tns:IStorrageService_OpenFolder_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IAccessService" type="tns:IAccessService">
@@ -181,6 +201,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllSpace">
       <soap:operation soapAction="http://tempuri.org/IStorrageService/GetAllSpace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <soap:operation soapAction="http://tempuri.org/IStorrageService/Search" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OpenFolder">
+      <soap:operation soapAction="http://tempuri.org/IStorrageService/OpenFolder" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
