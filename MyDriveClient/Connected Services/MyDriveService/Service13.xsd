@@ -12,7 +12,7 @@
   <xs:element name="UserRegistrationResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="UserRegistrationResult" type="q2:AnswerCode" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="UserRegistrationResult" nillable="true" type="q2:AnswerUserResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -27,7 +27,7 @@
   <xs:element name="UserAuthResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="UserAuthResult" type="q3:AnswerCode" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="UserAuthResult" nillable="true" type="q3:AnswerUserResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

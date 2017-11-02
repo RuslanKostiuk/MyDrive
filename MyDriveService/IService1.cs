@@ -28,12 +28,49 @@ namespace MyDriveService
         [DataMember]
         public List<StorageFile> Files { get; set; }
 
+        public AnswerResponse()
+        {
+            Files = new List<StorageFile>();
+        }
+
+
+    }
+
+    public class AnswerUserResponse
+    {
+        [DataMember]
+        public AnswerCode Code { get; set; }
+
+        [DataMember]
+        public string Message { get; set; }
+
+        [DataMember]
+        public User _User { get; set; }
+
 
     }
 
     public static class AnswerResponceSetter
     {
-        
+
+        public static AnswerUserResponse SetUserResponse(AnswerCode code, User user, string message)
+        {
+            AnswerUserResponse response = new AnswerUserResponse();
+            response.Code = code;
+            response._User = user;
+            response.Message = message;
+            return response;
+        }
+
+        public static AnswerUserResponse SetUserResponse(AnswerCode code,  string message)
+        {
+            AnswerUserResponse response = new AnswerUserResponse();
+            response.Code = code;
+            response.Message = message;
+            return response;
+        }
+
+
         public static AnswerResponse SetResponse(AnswerCode code, List<StorageFile> files, string message)
         {
             AnswerResponse response = new AnswerResponse();
@@ -68,11 +105,11 @@ namespace MyDriveService
 
   
         [OperationContract]
-        AnswerCode UserRegistration(User user);
+        AnswerUserResponse UserRegistration(User user);
 
         //TODO: UserNamePasswordValidator
         [OperationContract]
-        AnswerCode UserAuth(string login, string password);
+        AnswerUserResponse UserAuth(string login, string password);
 
     }
 

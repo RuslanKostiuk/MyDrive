@@ -120,6 +120,83 @@ namespace MyDriveClient.MyDriveService {
         maximum = 2,
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AnswerUserResponse", Namespace="http://schemas.datacontract.org/2004/07/MyDriveService")]
+    [System.SerializableAttribute()]
+    public partial class AnswerUserResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MyDriveClient.MyDriveService.AnswerCode CodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MyDriveClient.MyDriveService.User _UserField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MyDriveClient.MyDriveService.AnswerCode Code {
+            get {
+                return this.CodeField;
+            }
+            set {
+                if ((this.CodeField.Equals(value) != true)) {
+                    this.CodeField = value;
+                    this.RaisePropertyChanged("Code");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MyDriveClient.MyDriveService.User _User {
+            get {
+                return this._UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this._UserField, value) != true)) {
+                    this._UserField = value;
+                    this.RaisePropertyChanged("_User");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="AnswerCode", Namespace="http://schemas.datacontract.org/2004/07/MyDriveService")]
     public enum AnswerCode : int {
@@ -274,16 +351,16 @@ namespace MyDriveClient.MyDriveService {
     public interface IAccessService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccessService/UserRegistration", ReplyAction="http://tempuri.org/IAccessService/UserRegistrationResponse")]
-        MyDriveClient.MyDriveService.AnswerCode UserRegistration(MyDriveClient.MyDriveService.User user);
+        MyDriveClient.MyDriveService.AnswerUserResponse UserRegistration(MyDriveClient.MyDriveService.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccessService/UserRegistration", ReplyAction="http://tempuri.org/IAccessService/UserRegistrationResponse")]
-        System.Threading.Tasks.Task<MyDriveClient.MyDriveService.AnswerCode> UserRegistrationAsync(MyDriveClient.MyDriveService.User user);
+        System.Threading.Tasks.Task<MyDriveClient.MyDriveService.AnswerUserResponse> UserRegistrationAsync(MyDriveClient.MyDriveService.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccessService/UserAuth", ReplyAction="http://tempuri.org/IAccessService/UserAuthResponse")]
-        MyDriveClient.MyDriveService.AnswerCode UserAuth(string login, string password);
+        MyDriveClient.MyDriveService.AnswerUserResponse UserAuth(string login, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccessService/UserAuth", ReplyAction="http://tempuri.org/IAccessService/UserAuthResponse")]
-        System.Threading.Tasks.Task<MyDriveClient.MyDriveService.AnswerCode> UserAuthAsync(string login, string password);
+        System.Threading.Tasks.Task<MyDriveClient.MyDriveService.AnswerUserResponse> UserAuthAsync(string login, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -313,19 +390,19 @@ namespace MyDriveClient.MyDriveService {
                 base(binding, remoteAddress) {
         }
         
-        public MyDriveClient.MyDriveService.AnswerCode UserRegistration(MyDriveClient.MyDriveService.User user) {
+        public MyDriveClient.MyDriveService.AnswerUserResponse UserRegistration(MyDriveClient.MyDriveService.User user) {
             return base.Channel.UserRegistration(user);
         }
         
-        public System.Threading.Tasks.Task<MyDriveClient.MyDriveService.AnswerCode> UserRegistrationAsync(MyDriveClient.MyDriveService.User user) {
+        public System.Threading.Tasks.Task<MyDriveClient.MyDriveService.AnswerUserResponse> UserRegistrationAsync(MyDriveClient.MyDriveService.User user) {
             return base.Channel.UserRegistrationAsync(user);
         }
         
-        public MyDriveClient.MyDriveService.AnswerCode UserAuth(string login, string password) {
+        public MyDriveClient.MyDriveService.AnswerUserResponse UserAuth(string login, string password) {
             return base.Channel.UserAuth(login, password);
         }
         
-        public System.Threading.Tasks.Task<MyDriveClient.MyDriveService.AnswerCode> UserAuthAsync(string login, string password) {
+        public System.Threading.Tasks.Task<MyDriveClient.MyDriveService.AnswerUserResponse> UserAuthAsync(string login, string password) {
             return base.Channel.UserAuthAsync(login, password);
         }
     }

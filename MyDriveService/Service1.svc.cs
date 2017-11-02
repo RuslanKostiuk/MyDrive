@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,27 +13,41 @@ namespace MyDriveService
     
     public class AccessService : IAccessService,IStorrageService
     {
-        MyDriveDB db = new MyDriveDB();
-        public AnswerCode UserAuth(string login, string password)
+        static string connStr = ConfigurationManager.ConnectionStrings["MyDriveCS"].ConnectionString;
+        MyDriveDB db = new MyDriveDB(connStr);
+        public AnswerUserResponse UserAuth(string login, string password)
         {
+            var _user = db.Users.Where(user => user.Login == login && user.Password == password);
             if (
-                 db.Users.Where(user => user.Login == login && user.Password == password).Count() > 0
-              ) return AnswerCode.Complete;
+                  _user.Count() > 0
+              ) return AnswerResponceSetter.SetUserResponse(
+                  AnswerCode.Complete,
+                 _user.First(),
+                 "You entered succesfuly"
+                  );
 
-            return AnswerCode.Failed;
+            return AnswerResponceSetter.SetUserResponse(
+                  AnswerCode.Failed,
+                 "authentication failed"
+                  );
         }
 
-        public AnswerCode UserRegistration(User user)
+        public AnswerUserResponse UserRegistration(User user)
         {
             try
             {
-                db.Users.Add(user);
+                var _user = db.Users.Add(user);
                 db.SaveChanges();
-                return AnswerCode.Complete;
+                Directory.CreateDirectory(@"root/"+ user.Login); 
+                return AnswerResponceSetter.SetUserResponse(
+                    AnswerCode.Complete,
+                    _user,
+                    "Registration complete succesfuly"
+                    );
             }
-            catch
+            catch(Exception ex)
             {
-                return AnswerCode.Failed;
+                return AnswerResponceSetter.SetUserResponse(AnswerCode.Failed, ex.Message);
             }
         }
 
@@ -113,7 +128,7 @@ namespace MyDriveService
                 files.Add(
                         new StorageFile()
                         {
-                            Name = data[i]
+                            Name = data[i],
                         });
             }
             return AnswerResponceSetter.SetResponse(
