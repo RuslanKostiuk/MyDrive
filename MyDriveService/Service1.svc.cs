@@ -117,7 +117,7 @@ namespace MyDriveService
                 );
         }
 
-        public AnswerResponse ReadAll(string path)
+        public AnswerResponse Search(string path)
         {
             List<string> data = new List<string>();
             List<StorageFile> files = new List<StorageFile>();
@@ -136,6 +136,25 @@ namespace MyDriveService
                 files,
                 "All files read succesfuly"
                 );
+        }
+
+        public AnswerResponse ReadAll(string path)
+        {
+
+            List<StorageFile> files = new List<StorageFile>();
+            for(int i = 0; i < Directory.GetDirectories(path).Length; i++)
+            {
+                files.Add(new StorageFile()
+                {
+                    Name = Directory.GetDirectories(path)[i]
+                });
+            }
+            
+            return AnswerResponceSetter.SetResponse(
+               AnswerCode.Complete,
+               files,
+               "All files read succesfuly"
+               );
         }
 
 

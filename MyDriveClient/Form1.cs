@@ -15,6 +15,7 @@ namespace MyDriveClient
         MyDriveService.User user = new MyDriveService.User();
         MyDriveService.StorrageServiceClient clientStorrage = new MyDriveService.StorrageServiceClient();
 
+        string base_address;
         public MyDriveService.User _User
         {
             get { return this.user; }
@@ -26,19 +27,20 @@ namespace MyDriveClient
 
             new EnterForm(this).ShowDialog();
             this.Hide();
-            InitializeTreeView();
+            base_address = @"root/" + user.Login;
+           treeView1.Nodes.AddRange(InitializeTreeView(base_address).ToArray());
         }
 
-        private void InitializeTreeView()
+        private List<TreeNode> InitializeTreeView(string path)
         {
             List<TreeNode> nodes = new List<TreeNode>();
-            clientStorrage.ReadAll("root").Files.Select(file => file.Name).ToList().ForEach(item => nodes.Add(new TreeNode() { Text = item }));
-            treeView1.Nodes.AddRange(nodes.ToArray());
+            clientStorrage.ReadAll(path).Files.Select(file => file.Name).ToList().ForEach(item => nodes.Add(new TreeNode() { Text = item }));
+            return nodes;
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-
+            e.Node.Nodes.AddRange(InitializeTreeView(e.Node.FullPath).ToArray());
         }
     }
 }

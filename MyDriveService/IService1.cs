@@ -137,6 +137,9 @@ namespace MyDriveService
 
         [OperationContract]
         int GetAllSpace(int id);
+
+        [OperationContract]
+        AnswerResponse Search(string path);
     }
 
 
