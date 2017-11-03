@@ -16,6 +16,5 @@ C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveService\bin\EntityFramework.dll
 C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveService\bin\EntityFramework.SqlServer.dll
 C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveService\bin\EntityFramework.xml
 C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveService\bin\EntityFramework.SqlServer.xml
-C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveService\obj\Debug\MyDriveService.csprojResolveAssemblyReference.cache
 C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveService\obj\Debug\MyDriveService.dll
 C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveService\obj\Debug\MyDriveService.pdb

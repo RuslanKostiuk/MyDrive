@@ -149,6 +149,15 @@ namespace MyDriveService
                     Name = Directory.GetDirectories(path)[i]
                 });
             }
+
+            for(int i = 0;i< Directory.GetFiles(path).Length; i++)
+            {
+                files.Add(new StorageFile()
+                {
+                    Name = Directory.GetFiles(path)[i]
+                });
+            }
+
             
             return AnswerResponceSetter.SetResponse(
                AnswerCode.Complete,
