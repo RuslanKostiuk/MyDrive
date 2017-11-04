@@ -18,3 +18,4 @@ C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveService\bin\EntityFramework.xml
 C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveService\bin\EntityFramework.SqlServer.xml
 C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveService\obj\Debug\MyDriveService.dll
 C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveService\obj\Debug\MyDriveService.pdb
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveService\obj\Debug\MyDriveService.csprojResolveAssemblyReference.cache

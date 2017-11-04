@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MyDriveService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MyDriveService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:3729/Service1.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Login" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Role" type="tns:Roles" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:simpleType name="Roles">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="trial" />
+      <xs:enumeration value="simple" />
+      <xs:enumeration value="maximum" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Roles" nillable="true" type="tns:Roles" />
+  <xs:complexType name="AnswerUserResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" type="tns:AnswerCode" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="_User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AnswerUserResponse" nillable="true" type="tns:AnswerUserResponse" />
+  <xs:simpleType name="AnswerCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Complete" />
+      <xs:enumeration value="Failed" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AnswerCode" nillable="true" type="tns:AnswerCode" />
+  <xs:complexType name="AnswerResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" type="tns:AnswerCode" />
+      <xs:element minOccurs="0" name="Files" nillable="true" type="tns:ArrayOfStorageFile" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AnswerResponse" nillable="true" type="tns:AnswerResponse" />
+  <xs:complexType name="ArrayOfStorageFile">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StorageFile" nillable="true" type="tns:StorageFile" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStorageFile" nillable="true" type="tns:ArrayOfStorageFile" />
+  <xs:complexType name="StorageFile">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Bytes" nillable="true" type="q1:ArrayOfunsignedByte" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StorageFile" nillable="true" type="tns:StorageFile" />
+</xs:schema>

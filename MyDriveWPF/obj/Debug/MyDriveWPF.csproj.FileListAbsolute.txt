@@ -1,0 +1,14 @@
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\bin\Debug\MyDriveWPF.exe.config
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\bin\Debug\MyDriveWPF.exe
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\bin\Debug\MyDriveWPF.pdb
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.csprojResolveAssemblyReference.cache
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\obj\Debug\MainWindow.g.cs
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\obj\Debug\App.g.cs
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF_MarkupCompile.cache
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF_MarkupCompile.lref
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\obj\Debug\MainWindow.baml
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.g.resources
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.Properties.Resources.resources
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.csproj.GenerateResource.Cache
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.exe
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.pdb

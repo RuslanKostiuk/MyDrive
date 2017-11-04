@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AccessService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:3729/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:3729/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:3729/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MyDriveService" />
+      <xsd:import schemaLocation="http://localhost:3729/Service1.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAccessService_UserRegistration_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserRegistration" />
+  </wsdl:message>
+  <wsdl:message name="IAccessService_UserRegistration_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserRegistrationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAccessService_UserAuth_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserAuth" />
+  </wsdl:message>
+  <wsdl:message name="IAccessService_UserAuth_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserAuthResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_Create_InputMessage">
+    <wsdl:part name="parameters" element="tns:Create" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_Create_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_Delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_Delete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_Update_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_Update_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_Read_InputMessage">
+    <wsdl:part name="parameters" element="tns:Read" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_Read_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_ReadAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAll" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_ReadAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_GetFreeSpace_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFreeSpace" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_GetFreeSpace_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFreeSpaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_GetAllSpace_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSpace" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_GetAllSpace_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSpaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_Search_InputMessage">
+    <wsdl:part name="parameters" element="tns:Search" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_Search_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_OpenFolder_InputMessage">
+    <wsdl:part name="parameters" element="tns:OpenFolder" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_OpenFolder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OpenFolderResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IAccessService">
+    <wsdl:operation name="UserRegistration">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAccessService/UserRegistration" message="tns:IAccessService_UserRegistration_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAccessService/UserRegistrationResponse" message="tns:IAccessService_UserRegistration_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserAuth">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAccessService/UserAuth" message="tns:IAccessService_UserAuth_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAccessService/UserAuthResponse" message="tns:IAccessService_UserAuth_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IStorrageService">
+    <wsdl:operation name="Create">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStorrageService/Create" message="tns:IStorrageService_Create_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStorrageService/CreateResponse" message="tns:IStorrageService_Create_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStorrageService/Delete" message="tns:IStorrageService_Delete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStorrageService/DeleteResponse" message="tns:IStorrageService_Delete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStorrageService/Update" message="tns:IStorrageService_Update_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStorrageService/UpdateResponse" message="tns:IStorrageService_Update_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Read">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStorrageService/Read" message="tns:IStorrageService_Read_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStorrageService/ReadResponse" message="tns:IStorrageService_Read_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStorrageService/ReadAll" message="tns:IStorrageService_ReadAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStorrageService/ReadAllResponse" message="tns:IStorrageService_ReadAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFreeSpace">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStorrageService/GetFreeSpace" message="tns:IStorrageService_GetFreeSpace_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStorrageService/GetFreeSpaceResponse" message="tns:IStorrageService_GetFreeSpace_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSpace">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStorrageService/GetAllSpace" message="tns:IStorrageService_GetAllSpace_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStorrageService/GetAllSpaceResponse" message="tns:IStorrageService_GetAllSpace_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStorrageService/Search" message="tns:IStorrageService_Search_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStorrageService/SearchResponse" message="tns:IStorrageService_Search_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OpenFolder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStorrageService/OpenFolder" message="tns:IStorrageService_OpenFolder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStorrageService/OpenFolderResponse" message="tns:IStorrageService_OpenFolder_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IAccessService" type="tns:IAccessService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UserRegistration">
+      <soap:operation soapAction="http://tempuri.org/IAccessService/UserRegistration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserAuth">
+      <soap:operation soapAction="http://tempuri.org/IAccessService/UserAuth" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IStorrageService" type="tns:IStorrageService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Create">
+      <soap:operation soapAction="http://tempuri.org/IStorrageService/Create" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://tempuri.org/IStorrageService/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap:operation soapAction="http://tempuri.org/IStorrageService/Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Read">
+      <soap:operation soapAction="http://tempuri.org/IStorrageService/Read" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAll">
+      <soap:operation soapAction="http://tempuri.org/IStorrageService/ReadAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFreeSpace">
+      <soap:operation soapAction="http://tempuri.org/IStorrageService/GetFreeSpace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSpace">
+      <soap:operation soapAction="http://tempuri.org/IStorrageService/GetAllSpace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <soap:operation soapAction="http://tempuri.org/IStorrageService/Search" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OpenFolder">
+      <soap:operation soapAction="http://tempuri.org/IStorrageService/OpenFolder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AccessService">
+    <wsdl:port name="BasicHttpBinding_IAccessService" binding="tns:BasicHttpBinding_IAccessService">
+      <soap:address location="http://localhost:3729/Service1.svc/auth" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IStorrageService" binding="tns:BasicHttpBinding_IStorrageService">
+      <soap:address location="http://localhost:3729/Service1.svc/drive" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

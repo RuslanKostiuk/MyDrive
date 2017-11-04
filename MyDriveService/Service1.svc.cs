@@ -58,10 +58,13 @@ namespace MyDriveService
             {
                 string file_name = Path.GetFileName(path);
                 string directory_path = Path.GetDirectoryName(path);
-                if (!Directory.Exists(directory_path)) Directory.CreateDirectory(directory_path);
-                FileStream stream = File.Create(file_name);
-                stream.Write(file.ToArray(), 0, file.Count);
-                stream.Dispose();
+                if (!Directory.Exists(directory_path) && !string.IsNullOrEmpty(Path.GetExtension(path))) Directory.CreateDirectory(directory_path);
+                else
+                {
+                    FileStream stream = File.Create(file_name);
+                    stream.Write(file.ToArray(), 0, file.Count);
+                    stream.Dispose();
+                }
                 return AnswerResponceSetter.SetResponse(
                     AnswerCode.Complete,
                     new StorageFile()
