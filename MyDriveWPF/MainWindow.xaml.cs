@@ -27,8 +27,14 @@ namespace MyDriveWPF
         ServiceReference1.User user = new ServiceReference1.User()
         {
             Login="User1"
+        };
+
+        public ServiceReference1.User _User
+        {
+            get { return user; }
+            set { user = value; }
         }
-            ;
+
         ServiceReference1.StorrageServiceClient clientStorrage = new ServiceReference1.StorrageServiceClient();
         string base_address, current_path;
 
@@ -74,6 +80,10 @@ namespace MyDriveWPF
         {
             InitializeComponent();
             this.DataContext = this;
+
+            new Window1(this).ShowDialog();
+            this.Hide();
+
             base_address = @"D:\UserFolder\" + user.Login;
             current_path = base_address;
 
