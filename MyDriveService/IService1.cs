@@ -146,6 +146,9 @@ namespace MyDriveService
 
         [OperationContract]
         AnswerResponse OpenFolder(string path);
+
+        [OperationContract]
+        AnswerResponse RenameFolder(string oldPahr,string newPath);
     }
 
 

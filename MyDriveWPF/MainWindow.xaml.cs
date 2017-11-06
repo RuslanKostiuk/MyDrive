@@ -26,7 +26,6 @@ namespace MyDriveWPF
     {
         ServiceReference1.User user = new ServiceReference1.User();
 
-        ServiceReference1.StorrageServiceClient storrage = new ServiceReference1.StorrageServiceClient();
         public ServiceReference1.User _User
         {
             get { return user; }
@@ -90,15 +89,30 @@ namespace MyDriveWPF
 
             Current_path = base_address + user.Login;
 
-            All = InitializeListView(current_path);
+            All = InitializeListView(Current_path);
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             string str = "NewFolder";
             Directory.CreateDirectory(Current_path + "\\" + str);
-            storrage.CreateFolder(current_path.Remove(0,base_address.Length)+"\\" + str);
+
+            clientStorrage.CreateFolder(current_path.Remove(0,base_address.Length)+"\\" + str);
             All = InitializeListView(Current_path);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+           Directory.Move(listView.SelectedItem.ToString(), RenameBox.Text);
+                clientStorrage.RenameFolder(listView.SelectedItem.ToString().Remove(0, base_address.Length), RenameBox.Text.Remove(0, base_address.Length));
+                All = InitializeListView(Current_path);
+
+        }
+
+        private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(listView.SelectedItem!=null)
+            RenameBox.Text = listView.SelectedItem.ToString();
         }
 
         private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)

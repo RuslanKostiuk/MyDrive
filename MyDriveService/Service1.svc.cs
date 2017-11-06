@@ -226,6 +226,19 @@ namespace MyDriveService
                 return AnswerResponceSetter.SetResponse(AnswerCode.Failed, ex.Message);
             }
         }
+
+        public AnswerResponse RenameFolder(string oldPahr, string newPath)
+        {
+            try
+            {
+                Directory.Move(base_address + oldPahr, base_address + newPath);
+               return AnswerResponceSetter.SetResponse(AnswerCode.Complete, "Folder renamed");
+            }catch(Exception ex)
+            {
+                return  AnswerResponceSetter.SetResponse(AnswerCode.Failed, ex.Message);
+            }
+
+        }
     }
 
 

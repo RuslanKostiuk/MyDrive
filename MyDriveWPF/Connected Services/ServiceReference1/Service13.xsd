@@ -173,4 +173,19 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RenameFolder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="oldPahr" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="newPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RenameFolderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="RenameFolderResult" nillable="true" type="q14:AnswerResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
