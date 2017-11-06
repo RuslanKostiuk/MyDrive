@@ -38,7 +38,7 @@ namespace MyDriveService
             {
                 var _user = db.Users.Add(user);
                 db.SaveChanges();
-                Directory.CreateDirectory(@"C:\Users\Ruslanchik\Desktop\DriveRepositiry/"+ user.Login); 
+                Directory.CreateDirectory(@"D:\root\" + user.Login); 
                 return AnswerResponceSetter.SetUserResponse(
                     AnswerCode.Complete,
                     _user,
@@ -57,14 +57,9 @@ namespace MyDriveService
             try
             {
                 string file_name = Path.GetFileName(path);
-                string directory_path = Path.GetDirectoryName(path);
-                if (!Directory.Exists(directory_path) && !string.IsNullOrEmpty(Path.GetExtension(path))) Directory.CreateDirectory(directory_path);
-                else
-                {
-                    FileStream stream = File.Create(file_name);
-                    stream.Write(file.ToArray(), 0, file.Count);
-                    stream.Dispose();
-                }
+
+                File.Create(path);
+                
                 return AnswerResponceSetter.SetResponse(
                     AnswerCode.Complete,
                     new StorageFile()
@@ -172,7 +167,10 @@ namespace MyDriveService
 
         public AnswerResponse Update(List<byte> file, string path)
         {
-            return this.Create(file, path);
+            FileStream stream = File.Create(path);
+            stream.Write(file.ToArray(), 0, file.Count);
+            stream.Dispose();
+            return AnswerResponceSetter.SetResponse(AnswerCode.Complete, "");
         }
 
 
@@ -207,6 +205,22 @@ namespace MyDriveService
                     "folders in folder"
                     );
             }catch(Exception ex)
+            {
+                return AnswerResponceSetter.SetResponse(AnswerCode.Failed, ex.Message);
+            }
+        }
+
+        public AnswerResponse CreateFolder(string path)
+        {
+            try
+            {
+                Directory.CreateDirectory(path);
+                return AnswerResponceSetter.SetResponse(
+                     AnswerCode.Complete,
+                     path
+                     );
+            }
+            catch (Exception ex)
             {
                 return AnswerResponceSetter.SetResponse(AnswerCode.Failed, ex.Message);
             }

@@ -26,7 +26,7 @@
             <MenuItem Header="About us"/>
         </Menu>
         <TreeView  Grid.Row="1" />
-        <ListView Grid.Row="1" x:Name="listView" Grid.Column="2" ItemsSource="{Binding All}" MouseDoubleClick="ListView_MouseDoubleClick">
+        <ListView Grid.Row="1" x:Name="listView" ItemsSource="{Binding All}" MouseDoubleClick="ListView_MouseDoubleClick" Grid.ColumnSpan="2">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="AddFolder" Click="MenuItem_Click"></MenuItem>

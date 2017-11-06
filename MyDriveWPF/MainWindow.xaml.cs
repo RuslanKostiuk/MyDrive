@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -25,7 +26,7 @@ namespace MyDriveWPF
     {
         ServiceReference1.User user = new ServiceReference1.User()
         {
-            Login="Test3"
+            Login="User1"
         }
             ;
         ServiceReference1.StorrageServiceClient clientStorrage = new ServiceReference1.StorrageServiceClient();
@@ -73,48 +74,39 @@ namespace MyDriveWPF
         {
             InitializeComponent();
             this.DataContext = this;
-            base_address = @"C:\Users\Ruslanchik\Desktop\DriveRepositiry\" + user.Login;
+            base_address = @"D:\UserFolder\" + user.Login;
             current_path = base_address;
 
             All = InitializeListView(current_path);
-            Directories = InitializeTreeView(current_path);
-        }
-
-        private List<string> InitializeTreeView(string path)
-        {
-       
-            try
-            {
-               return clientStorrage.OpenFolder(path).Files.Select(file => file.Name).ToList();
- 
-            }
-            catch { return null; }
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            string str = "TestCreateFolder1";
-            clientStorrage.Create(null, Current_path + "/" + str);
+            string str = "NewFolder";
+            Directory.CreateDirectory(current_path + "\\" + str);
             All = InitializeListView(Current_path);
-        }
-
-        private void AddFile_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Current_path = listView.SelectedItem.ToString();
-            All = InitializeListView(current_path);
-        }
+            string path = listView.SelectedItem.ToString();
+            if (Directory.Exists(path)){
+                All = InitializeListView(path);
+            }
+            else
+            {
+                Process.Start(path);
+            }
+        }   
 
         private List<string> InitializeListView(string path)
         {
 
             try
             {
-                return clientStorrage.ReadAll(path).Files.Select(file => file.Name).ToList();
+                var all = Directory.GetDirectories(path).ToList();
+                all.AddRange(Directory.GetFiles(path));
+                return all;
                
             }
             catch
@@ -122,5 +114,7 @@ namespace MyDriveWPF
                 return null;
             }
         }
+
+  
     }
 }

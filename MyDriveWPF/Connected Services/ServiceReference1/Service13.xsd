@@ -46,6 +46,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CreateFolder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="path" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateFolderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="CreateFolderResult" nillable="true" type="q6:AnswerResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="Delete">
     <xs:complexType>
       <xs:sequence>
@@ -56,14 +70,14 @@
   <xs:element name="DeleteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="DeleteResult" nillable="true" type="q6:AnswerResponse" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="DeleteResult" nillable="true" type="q7:AnswerResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Update">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="file" nillable="true" type="q7:ArrayOfunsignedByte" />
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="file" nillable="true" type="q8:ArrayOfunsignedByte" />
         <xs:element minOccurs="0" name="path" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -71,7 +85,7 @@
   <xs:element name="UpdateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="UpdateResult" nillable="true" type="q8:AnswerResponse" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="UpdateResult" nillable="true" type="q9:AnswerResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -85,7 +99,7 @@
   <xs:element name="ReadResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="ReadResult" nillable="true" type="q9:AnswerResponse" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="ReadResult" nillable="true" type="q10:AnswerResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -99,7 +113,7 @@
   <xs:element name="ReadAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="ReadAllResult" nillable="true" type="q10:AnswerResponse" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="ReadAllResult" nillable="true" type="q11:AnswerResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -141,7 +155,7 @@
   <xs:element name="SearchResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="SearchResult" nillable="true" type="q11:AnswerResponse" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="SearchResult" nillable="true" type="q12:AnswerResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -155,7 +169,7 @@
   <xs:element name="OpenFolderResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="OpenFolderResult" nillable="true" type="q12:AnswerResponse" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="OpenFolderResult" nillable="true" type="q13:AnswerResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

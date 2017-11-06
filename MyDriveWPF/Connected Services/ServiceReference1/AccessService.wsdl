@@ -26,6 +26,12 @@
   <wsdl:message name="IStorrageService_Create_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateResponse" />
   </wsdl:message>
+  <wsdl:message name="IStorrageService_CreateFolder_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateFolder" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_CreateFolder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateFolderResponse" />
+  </wsdl:message>
   <wsdl:message name="IStorrageService_Delete_InputMessage">
     <wsdl:part name="parameters" element="tns:Delete" />
   </wsdl:message>
@@ -89,6 +95,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IStorrageService/Create" message="tns:IStorrageService_Create_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IStorrageService/CreateResponse" message="tns:IStorrageService_Create_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="CreateFolder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStorrageService/CreateFolder" message="tns:IStorrageService_CreateFolder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStorrageService/CreateFolderResponse" message="tns:IStorrageService_CreateFolder_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="Delete">
       <wsdl:input wsaw:Action="http://tempuri.org/IStorrageService/Delete" message="tns:IStorrageService_Delete_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IStorrageService/DeleteResponse" message="tns:IStorrageService_Delete_OutputMessage" />
@@ -147,6 +157,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="Create">
       <soap:operation soapAction="http://tempuri.org/IStorrageService/Create" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateFolder">
+      <soap:operation soapAction="http://tempuri.org/IStorrageService/CreateFolder" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
