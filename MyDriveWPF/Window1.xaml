@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyDriveWPF"
         mc:Ignorable="d"
-        Title="Log In Window" Height="300" Width="287.448">
+        Title="Log In Window" Height="341.423" Width="287.448">
     <Grid>
-        <TextBlock Margin="42,49,120,200">Login</TextBlock>
-        <TextBlock Margin="42,98,35,151">Password</TextBlock>
-        <TextBox Name="loginBox" Width="150" Height="20" Margin="94,49,35,200"></TextBox>
-        <PasswordBox Name="passwordBox" Width="150" Height="20" Margin="94,98,35,151"></PasswordBox>
-        <Button Content="Enter" HorizontalAlignment="Left" Margin="169,170,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="Registration" HorizontalAlignment="Left" Margin="65,170,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <TextBlock Margin="28,70,35,220">Login</TextBlock>
+        <TextBlock Margin="28,130,35,160">Password</TextBlock>
+        <TextBox Name="loginBox" Width="150" Height="20" Margin="94,49,35,200" Grid.ColumnSpan="2"></TextBox>
+        <PasswordBox Name="passwordBox" Width="150" Height="20" Margin="94,109,35,140" Grid.ColumnSpan="2"></PasswordBox>
+        <Button Content="Enter" HorizontalAlignment="Left" Margin="169,211,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Registration" HorizontalAlignment="Left" Margin="56,211,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
     </Grid>
 </Window>

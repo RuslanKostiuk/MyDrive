@@ -33,6 +33,7 @@ namespace MyDriveWPF
             if (userAnswer.Code == ServiceReference1.AnswerCode.Complete)
             {
                 mainWindow._User = userAnswer._User;
+            
                 this.Close();
             }
             else

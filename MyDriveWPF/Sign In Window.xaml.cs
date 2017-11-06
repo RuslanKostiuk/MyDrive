@@ -30,6 +30,7 @@ namespace MyDriveWPF
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             new Window1(mainWindow).ShowDialog();
+           
             this.Close();
         }
 

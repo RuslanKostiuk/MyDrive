@@ -15,6 +15,7 @@ namespace MyDriveService
     {
         static string connStr = ConfigurationManager.ConnectionStrings["MyDriveCS"].ConnectionString;
         MyDriveDB db = new MyDriveDB(connStr);
+        string base_address = @"D:\root\ServerFolder\";
         public AnswerUserResponse UserAuth(string login, string password)
         {
             var _user = db.Users.Where(user => user.Login == login && user.Password == password);
@@ -38,7 +39,7 @@ namespace MyDriveService
             {
                 var _user = db.Users.Add(user);
                 db.SaveChanges();
-                Directory.CreateDirectory(@"D:\root\" + user.Login); 
+                Directory.CreateDirectory(base_address + user.Login); 
                 return AnswerResponceSetter.SetUserResponse(
                     AnswerCode.Complete,
                     _user,
@@ -214,7 +215,7 @@ namespace MyDriveService
         {
             try
             {
-                Directory.CreateDirectory(path);
+                Directory.CreateDirectory(base_address+path);
                 return AnswerResponceSetter.SetResponse(
                      AnswerCode.Complete,
                      path

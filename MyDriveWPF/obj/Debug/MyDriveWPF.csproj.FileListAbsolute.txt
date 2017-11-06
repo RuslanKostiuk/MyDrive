@@ -27,3 +27,7 @@ C:\Users\wds\Desktop\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.csproj.GenerateReso
 C:\Users\wds\Desktop\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.csproj.CoreCompileInputs.cache
 C:\Users\wds\Desktop\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.exe
 C:\Users\wds\Desktop\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.pdb
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\obj\Debug\Sign In Window.g.cs
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\obj\Debug\Window1.g.cs
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\obj\Debug\Sign In Window.baml
+C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\obj\Debug\Window1.baml

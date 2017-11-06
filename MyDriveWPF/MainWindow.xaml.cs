@@ -24,11 +24,9 @@ namespace MyDriveWPF
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        ServiceReference1.User user = new ServiceReference1.User()
-        {
-            Login="User1"
-        };
+        ServiceReference1.User user = new ServiceReference1.User();
 
+        ServiceReference1.StorrageServiceClient storrage = new ServiceReference1.StorrageServiceClient();
         public ServiceReference1.User _User
         {
             get { return user; }
@@ -82,10 +80,15 @@ namespace MyDriveWPF
             this.DataContext = this;
 
             new Window1(this).ShowDialog();
-            this.Hide();
+           
 
-            base_address = @"D:\UserFolder\" + user.Login;
-            current_path = base_address;
+            
+
+            base_address = @"D:\root\UserFolder\";
+
+            if (!Directory.Exists(base_address)) Directory.CreateDirectory(base_address);
+
+            Current_path = base_address + user.Login;
 
             All = InitializeListView(current_path);
         }
@@ -93,7 +96,8 @@ namespace MyDriveWPF
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             string str = "NewFolder";
-            Directory.CreateDirectory(current_path + "\\" + str);
+            Directory.CreateDirectory(Current_path + "\\" + str);
+            storrage.CreateFolder(current_path.Remove(0,base_address.Length)+"\\" + str);
             All = InitializeListView(Current_path);
         }
 
@@ -116,6 +120,7 @@ namespace MyDriveWPF
             {
                 var all = Directory.GetDirectories(path).ToList();
                 all.AddRange(Directory.GetFiles(path));
+                Current_path = path;
                 return all;
                
             }
