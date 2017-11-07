@@ -87,25 +87,26 @@ namespace MyDriveWPF
 
             if (!Directory.Exists(base_address)) Directory.CreateDirectory(base_address);
 
-            Current_path = base_address + user.Login;
+            Current_path = user.Login;
 
-            All = InitializeListView(Current_path);
+            All = InitializeListView(base_address + Current_path);
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             string str = "NewFolder";
-            Directory.CreateDirectory(Current_path + "\\" + str);
+            Directory.CreateDirectory(base_address + Current_path + "\\" + str);
 
-            clientStorrage.CreateFolder(current_path.Remove(0,base_address.Length)+"\\" + str);
-            All = InitializeListView(Current_path);
+            clientStorrage.CreateFolder(current_path+"\\" + str);
+            All = InitializeListView(base_address + Current_path);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           Directory.Move(listView.SelectedItem.ToString(), RenameBox.Text);
-                clientStorrage.RenameFolder(listView.SelectedItem.ToString().Remove(0, base_address.Length), RenameBox.Text.Remove(0, base_address.Length));
-                All = InitializeListView(Current_path);
+                var path = base_address + current_path + "\\" + listView.SelectedItem.ToString();
+                Directory.Move(path, base_address + current_path + "\\" +RenameBox.Text);
+                clientStorrage.RenameFolder(current_path+"\\"+ listView.SelectedItem.ToString(), current_path + "\\" +RenameBox.Text);
+                All = InitializeListView(base_address + Current_path);
 
         }
 
@@ -118,9 +119,9 @@ namespace MyDriveWPF
         private void AddFile_Click(object sender, RoutedEventArgs e)
         {
             string str = "NewFile";
-            File.Create(Current_path + "\\" + str);
+            File.Create(base_address + Current_path + "\\" + str);
 
-            clientStorrage.Create(null, current_path.Remove(0, base_address.Length) + "\\" + str);
+            clientStorrage.Create(null, current_path + "\\" + str);
             All = InitializeListView(Current_path);
         }
 
@@ -128,23 +129,24 @@ namespace MyDriveWPF
         {
             try
             {
-                if (File.Exists(listView.SelectedItem.ToString()))
+                string path = base_address + Current_path+"\\" + listView.SelectedItem.ToString();
+                if (File.Exists(path))
                 {
                     if (MessageBox.Show("are you sure you want delete this file?", "Delete file", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
-                        File.Delete(listView.SelectedItem.ToString());
+                        File.Delete(path);
                     }
                 }
                 else
                 {
                     if (MessageBox.Show("are you sure you want delete this directory?", "Delete directory", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
-                        Directory.Delete(listView.SelectedItem.ToString());
+                        Directory.Delete(path);
                     }
                 }
 
-                clientStorrage.Delete(listView.SelectedItem.ToString().Remove(0, base_address.Length));
-                All = InitializeListView(Current_path);
+                clientStorrage.Delete(path.Remove(0, base_address.Length));
+                All = InitializeListView(base_address+Current_path);
             }
             catch(NullReferenceException)
             {
@@ -154,7 +156,7 @@ namespace MyDriveWPF
 
         private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            string path = listView.SelectedItem.ToString();
+            string path = base_address + Current_path+"\\" + listView.SelectedItem.ToString();
             if (Directory.Exists(path)){
                 All = InitializeListView(path);
             }
@@ -171,7 +173,11 @@ namespace MyDriveWPF
             {
                 var all = Directory.GetDirectories(path).ToList();
                 all.AddRange(Directory.GetFiles(path));
-                Current_path = path;
+
+                for(int i= 0; i < all.Count; i++)
+                    all[i] = all[i].Split('\\').Last();
+
+                Current_path = path.Remove(0,base_address.Length);
                 return all;
                
             }

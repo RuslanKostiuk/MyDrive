@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MyDriveWPF"
         mc:Ignorable="d"
         Title="Sign In Window" Height="300" Width="300">
-    <Grid>
+    <Canvas>
         <TextBlock Margin="42,25,0,0"><Run Text="Login"/></TextBlock>
         <TextBlock Margin="42,74,0,0"><Run Text="Password"/></TextBlock>
         <TextBox x:Name="loginBox" Width="150" Height="20" Margin="94,25,48,224"/>
@@ -19,5 +19,5 @@
             <TextBlock>Extra User</TextBlock>
         </ComboBox>
 
-    </Grid>
+    </Canvas>
 </Window>
