@@ -57,9 +57,8 @@ namespace MyDriveService
 
             try
             {
-                string file_name = Path.GetFileName(path);
 
-                File.Create(path);
+                File.Create(base_address + path);
                 
                 return AnswerResponceSetter.SetResponse(
                     AnswerCode.Complete,
@@ -83,7 +82,14 @@ namespace MyDriveService
         {
             try
             {
-                File.Delete(name);
+                if (File.Exists(base_address + name))
+                {
+                    File.Delete(base_address + name);
+                }
+                else
+                {
+                    Directory.Delete(base_address + name);
+                }
                 return AnswerResponceSetter.SetResponse(AnswerCode.Complete, "File deleted succesfuly");
 
             }

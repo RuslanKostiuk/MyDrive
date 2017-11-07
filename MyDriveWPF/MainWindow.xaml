@@ -33,6 +33,8 @@
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="AddFolder" Click="MenuItem_Click"></MenuItem>
+                    <MenuItem Header="AddFile" Click="AddFile_Click" ></MenuItem>
+                    <MenuItem Header="Delete" Click="MenuDelete_Click" ></MenuItem>
                 </ContextMenu>
             </ListView.ContextMenu>
         </ListView>

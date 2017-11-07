@@ -31,3 +31,7 @@ C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\obj\Debug\Sign In Window.g.cs
 C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\obj\Debug\Window1.g.cs
 C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\obj\Debug\Sign In Window.baml
 C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\obj\Debug\Window1.baml
+C:\Users\wds\Desktop\MyDrive\MyDriveWPF\obj\Debug\Sign In Window.g.cs
+C:\Users\wds\Desktop\MyDrive\MyDriveWPF\obj\Debug\Window1.g.cs
+C:\Users\wds\Desktop\MyDrive\MyDriveWPF\obj\Debug\Sign In Window.baml
+C:\Users\wds\Desktop\MyDrive\MyDriveWPF\obj\Debug\Window1.baml

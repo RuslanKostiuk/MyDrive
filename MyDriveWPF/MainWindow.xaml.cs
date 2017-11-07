@@ -115,6 +115,43 @@ namespace MyDriveWPF
             RenameBox.Text = listView.SelectedItem.ToString();
         }
 
+        private void AddFile_Click(object sender, RoutedEventArgs e)
+        {
+            string str = "NewFile";
+            File.Create(Current_path + "\\" + str);
+
+            clientStorrage.Create(null, current_path.Remove(0, base_address.Length) + "\\" + str);
+            All = InitializeListView(Current_path);
+        }
+
+        private void MenuDelete_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (File.Exists(listView.SelectedItem.ToString()))
+                {
+                    if (MessageBox.Show("are you sure you want delete this file?", "Delete file", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        File.Delete(listView.SelectedItem.ToString());
+                    }
+                }
+                else
+                {
+                    if (MessageBox.Show("are you sure you want delete this directory?", "Delete directory", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        Directory.Delete(listView.SelectedItem.ToString());
+                    }
+                }
+
+                clientStorrage.Delete(listView.SelectedItem.ToString().Remove(0, base_address.Length));
+                All = InitializeListView(Current_path);
+            }
+            catch(NullReferenceException)
+            {
+                MessageBox.Show("Chose File or Directory");
+            }
+        }
+
         private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             string path = listView.SelectedItem.ToString();
