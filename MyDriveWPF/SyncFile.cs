@@ -9,7 +9,7 @@ namespace MyDriveWPF
 {
     public static class SyncFile
     {
-        static List<ServiceReference1.StorageFile> directories;
+        static List<ServiceReference1.StorageFile> files;
         static List<string> myDir = new List<string>();
         static void GetFiles(string root, string base_path)
         {
@@ -31,23 +31,23 @@ namespace MyDriveWPF
 
         public static void Synchronize(string root, string base_path)
         {
-            directories = new ServiceReference1.StorrageServiceClient().SearchDirectories().Files.ToList();
+            files = new ServiceReference1.StorrageServiceClient().SearchFiles().Files.ToList();
             GetFiles(root, base_path);
 
 
-            for (int i = 0; i < directories.Count; i++)
+            for (int i = 0; i < files.Count; i++)
             {
-                if (!directories.Select(x => x.Name).ToList().Contains(myDir[i]))
+                if (!files.Select(x => x.Name).ToList().Contains(myDir[i]))
                 {
-                    Directory.Delete(myDir[i]);
+                    File.Delete(myDir[i]);
                 }
             }
 
             for (int i = 0; i < myDir.Count; i++)
             {
-                if (!myDir.Contains(directories[i].Name))
+                if (!myDir.Contains(files[i].Name))
                 {
-                    Directory.CreateDirectory(directories[i].Name);
+                    File.WriteAllBytes(files[i].Name, files[i].Bytes);
                 }
             }
         }
