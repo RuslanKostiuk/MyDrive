@@ -26,9 +26,6 @@
             </MenuItem>
             <MenuItem Header="About us"/>
         </Menu>
-        <TreeView  Grid.Row="1" Grid.RowSpan="2" >
-            <TextBlock TextWrapping="Wrap" Text="TextBlock"/>
-        </TreeView>
         <ListView Grid.Row="1" x:Name="listView" ItemsSource="{Binding All}" MouseDoubleClick="ListView_MouseDoubleClick" Grid.ColumnSpan="2" Margin="0,0,0,34" Grid.RowSpan="2" SelectionChanged="listView_SelectionChanged">
             <ListView.ContextMenu>
                 <ContextMenu>

@@ -153,7 +153,6 @@ namespace MyDriveWPF
                 MessageBox.Show("Chose File or Directory");
             }
         }
-
         private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             string path = base_address + Current_path+"\\" + listView.SelectedItem.ToString();
@@ -186,6 +185,8 @@ namespace MyDriveWPF
                 return null;
             }
         }
+
+
 
   
     }

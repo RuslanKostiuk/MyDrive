@@ -68,11 +68,17 @@
   <wsdl:message name="IStorrageService_GetAllSpace_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllSpaceResponse" />
   </wsdl:message>
-  <wsdl:message name="IStorrageService_Search_InputMessage">
-    <wsdl:part name="parameters" element="tns:Search" />
+  <wsdl:message name="IStorrageService_SearchFiles_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchFiles" />
   </wsdl:message>
-  <wsdl:message name="IStorrageService_Search_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SearchResponse" />
+  <wsdl:message name="IStorrageService_SearchFiles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_SearchDirectories_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchDirectories" />
+  </wsdl:message>
+  <wsdl:message name="IStorrageService_SearchDirectories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchDirectoriesResponse" />
   </wsdl:message>
   <wsdl:message name="IStorrageService_OpenFolder_InputMessage">
     <wsdl:part name="parameters" element="tns:OpenFolder" />
@@ -129,9 +135,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IStorrageService/GetAllSpace" message="tns:IStorrageService_GetAllSpace_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IStorrageService/GetAllSpaceResponse" message="tns:IStorrageService_GetAllSpace_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="Search">
-      <wsdl:input wsaw:Action="http://tempuri.org/IStorrageService/Search" message="tns:IStorrageService_Search_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IStorrageService/SearchResponse" message="tns:IStorrageService_Search_OutputMessage" />
+    <wsdl:operation name="SearchFiles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStorrageService/SearchFiles" message="tns:IStorrageService_SearchFiles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStorrageService/SearchFilesResponse" message="tns:IStorrageService_SearchFiles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchDirectories">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStorrageService/SearchDirectories" message="tns:IStorrageService_SearchDirectories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStorrageService/SearchDirectoriesResponse" message="tns:IStorrageService_SearchDirectories_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="OpenFolder">
       <wsdl:input wsaw:Action="http://tempuri.org/IStorrageService/OpenFolder" message="tns:IStorrageService_OpenFolder_InputMessage" />
@@ -237,8 +247,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Search">
-      <soap:operation soapAction="http://tempuri.org/IStorrageService/Search" style="document" />
+    <wsdl:operation name="SearchFiles">
+      <soap:operation soapAction="http://tempuri.org/IStorrageService/SearchFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchDirectories">
+      <soap:operation soapAction="http://tempuri.org/IStorrageService/SearchDirectories" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

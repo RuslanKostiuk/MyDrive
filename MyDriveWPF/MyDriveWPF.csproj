@@ -59,6 +59,8 @@
     <Compile Include="Sign In Window.xaml.cs">
       <DependentUpon>Sign In Window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SyncDirectory.cs" />
+    <Compile Include="SyncFile.cs" />
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>

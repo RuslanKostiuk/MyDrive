@@ -122,11 +122,24 @@ namespace MyDriveService
                 );
         }
 
-        public AnswerResponse Search(string path)
+        public AnswerResponse SearchFiles()
         {
             List<string> data = new List<string>();
             List<StorageFile> files = new List<StorageFile>();
-            this.FindData(path, data);
+            this.FindFiles(base_address, data);
+
+            return AnswerResponceSetter.SetResponse(
+                AnswerCode.Complete,
+                files,
+                "All files read succesfuly"
+                );
+        }
+
+        public AnswerResponse SearchDirectories()
+        {
+            List<string> data = new List<string>();
+            List<StorageFile> files = new List<StorageFile>();
+            this.FindDirectories(base_address, data);
 
             for (int i = 0; i < data.Count(); i++)
             {
@@ -142,6 +155,7 @@ namespace MyDriveService
                 "All files read succesfuly"
                 );
         }
+
 
         public AnswerResponse ReadAll(string path)
         {
@@ -196,6 +210,33 @@ namespace MyDriveService
             }
 
         }
+
+        void FindFiles(string path, List<string> data)
+        {
+
+            for (int i = 0; i < Directory.GetFiles(path).Length; i++)
+            {
+                data.Add(Directory.GetFiles(path)[i]);
+            }
+
+            for (int i = 0; i < Directory.GetDirectories(path).Length; i++)
+            {
+                FindData(Directory.GetDirectories(path)[i], data);
+            }
+
+        }
+
+        void FindDirectories(string path, List<string> data)
+        {
+
+            for (int i = 0; i < Directory.GetDirectories(path).Length; i++)
+            {
+                data.Add(Directory.GetDirectories(path)[i]);
+                FindData(Directory.GetDirectories(path)[i], data);
+            }
+
+        }
+
 
         public AnswerResponse OpenFolder(string path)
         {

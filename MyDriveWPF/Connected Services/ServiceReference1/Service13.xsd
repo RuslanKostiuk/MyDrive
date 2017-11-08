@@ -145,17 +145,27 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Search">
+  <xs:element name="SearchFiles">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchFilesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="path" nillable="true" type="xs:string" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="SearchFilesResult" nillable="true" type="q12:AnswerResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SearchResponse">
+  <xs:element name="SearchDirectories">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchDirectoriesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="SearchResult" nillable="true" type="q12:AnswerResponse" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="SearchDirectoriesResult" nillable="true" type="q13:AnswerResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -169,7 +179,7 @@
   <xs:element name="OpenFolderResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="OpenFolderResult" nillable="true" type="q13:AnswerResponse" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="OpenFolderResult" nillable="true" type="q14:AnswerResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -184,7 +194,7 @@
   <xs:element name="RenameFolderResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="RenameFolderResult" nillable="true" type="q14:AnswerResponse" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="RenameFolderResult" nillable="true" type="q15:AnswerResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
