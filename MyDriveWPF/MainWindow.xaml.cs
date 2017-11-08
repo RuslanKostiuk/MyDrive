@@ -78,16 +78,17 @@ namespace MyDriveWPF
             InitializeComponent();
             this.DataContext = this;
 
-            new Window1(this).ShowDialog();
-           
-
-            
+            new Window1(this).ShowDialog();                 
 
             base_address = @"D:\root\UserFolder\";
 
-            if (!Directory.Exists(base_address)) Directory.CreateDirectory(base_address);
-
             Current_path = user.Login;
+
+            if (!Directory.Exists(Current_path)) Directory.CreateDirectory(Current_path);
+
+            SyncDirectory.Synchronize(base_address+Current_path, base_address);
+            SyncFile.Synchronize(base_address+Current_path, base_address);
+            
 
             All = InitializeListView(base_address + Current_path);
         }

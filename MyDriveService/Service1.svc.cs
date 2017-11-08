@@ -122,11 +122,11 @@ namespace MyDriveService
                 );
         }
 
-        public AnswerResponse SearchFiles()
+        public AnswerResponse SearchFiles(string path)
         {
             List<string> data = new List<string>();
             List<StorageFile> files = new List<StorageFile>();
-            this.FindFiles(base_address, data);
+            this.FindFiles(path, data);
 
             return AnswerResponceSetter.SetResponse(
                 AnswerCode.Complete,
@@ -135,11 +135,11 @@ namespace MyDriveService
                 );
         }
 
-        public AnswerResponse SearchDirectories()
+        public AnswerResponse SearchDirectories(string path)
         {
             List<string> data = new List<string>();
             List<StorageFile> files = new List<StorageFile>();
-            this.FindDirectories(base_address, data);
+            this.FindDirectories(path, data);
 
             for (int i = 0; i < data.Count(); i++)
             {
@@ -216,12 +216,12 @@ namespace MyDriveService
 
             for (int i = 0; i < Directory.GetFiles(path).Length; i++)
             {
-                data.Add(Directory.GetFiles(path)[i]);
+                data.Add(Directory.GetFiles(path)[i].Remove(0,base_address.Length));
             }
 
             for (int i = 0; i < Directory.GetDirectories(path).Length; i++)
             {
-                FindData(Directory.GetDirectories(path)[i], data);
+                FindFiles(Directory.GetDirectories(path)[i], data);
             }
 
         }
@@ -231,8 +231,9 @@ namespace MyDriveService
 
             for (int i = 0; i < Directory.GetDirectories(path).Length; i++)
             {
-                data.Add(Directory.GetDirectories(path)[i]);
-                FindData(Directory.GetDirectories(path)[i], data);
+                 
+                data.Add(Directory.GetDirectories(path)[i].Remove(0, base_address.Length));
+                FindDirectories(Directory.GetDirectories(path)[i], data);
             }
 
         }

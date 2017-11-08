@@ -460,16 +460,16 @@ namespace MyDriveWPF.ServiceReference1 {
         System.Threading.Tasks.Task<int> GetAllSpaceAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorrageService/SearchFiles", ReplyAction="http://tempuri.org/IStorrageService/SearchFilesResponse")]
-        MyDriveWPF.ServiceReference1.AnswerResponse SearchFiles();
+        MyDriveWPF.ServiceReference1.AnswerResponse SearchFiles(string path);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorrageService/SearchFiles", ReplyAction="http://tempuri.org/IStorrageService/SearchFilesResponse")]
-        System.Threading.Tasks.Task<MyDriveWPF.ServiceReference1.AnswerResponse> SearchFilesAsync();
+        System.Threading.Tasks.Task<MyDriveWPF.ServiceReference1.AnswerResponse> SearchFilesAsync(string path);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorrageService/SearchDirectories", ReplyAction="http://tempuri.org/IStorrageService/SearchDirectoriesResponse")]
-        MyDriveWPF.ServiceReference1.AnswerResponse SearchDirectories();
+        MyDriveWPF.ServiceReference1.AnswerResponse SearchDirectories(string path);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorrageService/SearchDirectories", ReplyAction="http://tempuri.org/IStorrageService/SearchDirectoriesResponse")]
-        System.Threading.Tasks.Task<MyDriveWPF.ServiceReference1.AnswerResponse> SearchDirectoriesAsync();
+        System.Threading.Tasks.Task<MyDriveWPF.ServiceReference1.AnswerResponse> SearchDirectoriesAsync(string path);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorrageService/OpenFolder", ReplyAction="http://tempuri.org/IStorrageService/OpenFolderResponse")]
         MyDriveWPF.ServiceReference1.AnswerResponse OpenFolder(string path);
@@ -575,20 +575,20 @@ namespace MyDriveWPF.ServiceReference1 {
             return base.Channel.GetAllSpaceAsync(id);
         }
         
-        public MyDriveWPF.ServiceReference1.AnswerResponse SearchFiles() {
-            return base.Channel.SearchFiles();
+        public MyDriveWPF.ServiceReference1.AnswerResponse SearchFiles(string path) {
+            return base.Channel.SearchFiles(path);
         }
         
-        public System.Threading.Tasks.Task<MyDriveWPF.ServiceReference1.AnswerResponse> SearchFilesAsync() {
-            return base.Channel.SearchFilesAsync();
+        public System.Threading.Tasks.Task<MyDriveWPF.ServiceReference1.AnswerResponse> SearchFilesAsync(string path) {
+            return base.Channel.SearchFilesAsync(path);
         }
         
-        public MyDriveWPF.ServiceReference1.AnswerResponse SearchDirectories() {
-            return base.Channel.SearchDirectories();
+        public MyDriveWPF.ServiceReference1.AnswerResponse SearchDirectories(string path) {
+            return base.Channel.SearchDirectories(path);
         }
         
-        public System.Threading.Tasks.Task<MyDriveWPF.ServiceReference1.AnswerResponse> SearchDirectoriesAsync() {
-            return base.Channel.SearchDirectoriesAsync();
+        public System.Threading.Tasks.Task<MyDriveWPF.ServiceReference1.AnswerResponse> SearchDirectoriesAsync(string path) {
+            return base.Channel.SearchDirectoriesAsync(path);
         }
         
         public MyDriveWPF.ServiceReference1.AnswerResponse OpenFolder(string path) {

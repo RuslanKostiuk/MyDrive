@@ -15,7 +15,6 @@ C:\Users\Ruslanchik\Desktop\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.pdb
 C:\Users\wds\Desktop\MyDrive\MyDriveWPF\bin\Debug\MyDriveWPF.exe.config
 C:\Users\wds\Desktop\MyDrive\MyDriveWPF\bin\Debug\MyDriveWPF.exe
 C:\Users\wds\Desktop\MyDrive\MyDriveWPF\bin\Debug\MyDriveWPF.pdb
-C:\Users\wds\Desktop\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.csprojResolveAssemblyReference.cache
 C:\Users\wds\Desktop\MyDrive\MyDriveWPF\obj\Debug\MainWindow.g.cs
 C:\Users\wds\Desktop\MyDrive\MyDriveWPF\obj\Debug\App.g.cs
 C:\Users\wds\Desktop\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF_MarkupCompile.cache

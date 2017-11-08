@@ -26,7 +26,6 @@ C:\Users\wds\Desktop\MyDrive\MyDriveService\bin\EntityFramework.dll
 C:\Users\wds\Desktop\MyDrive\MyDriveService\bin\EntityFramework.SqlServer.dll
 C:\Users\wds\Desktop\MyDrive\MyDriveService\bin\EntityFramework.xml
 C:\Users\wds\Desktop\MyDrive\MyDriveService\bin\EntityFramework.SqlServer.xml
-C:\Users\wds\Desktop\MyDrive\MyDriveService\obj\Debug\MyDriveService.csprojResolveAssemblyReference.cache
 C:\Users\wds\Desktop\MyDrive\MyDriveService\obj\Debug\MyDriveService.csproj.CoreCompileInputs.cache
 C:\Users\wds\Desktop\MyDrive\MyDriveService\obj\Debug\MyDriveService.dll
 C:\Users\wds\Desktop\MyDrive\MyDriveService\obj\Debug\MyDriveService.pdb

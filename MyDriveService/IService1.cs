@@ -142,11 +142,11 @@ namespace MyDriveService
         int GetAllSpace(int id);
 
         [OperationContract]
-        AnswerResponse SearchFiles();
+        AnswerResponse SearchFiles(string path);
 
 
         [OperationContract]
-        AnswerResponse SearchDirectories();
+        AnswerResponse SearchDirectories(string path);
 
         [OperationContract]
         AnswerResponse OpenFolder(string path);

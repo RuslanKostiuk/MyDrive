@@ -10,44 +10,41 @@ namespace MyDriveWPF
     public static class SyncFile
     {
         static List<ServiceReference1.StorageFile> files;
-        static List<string> myDir = new List<string>();
+        static List<string> myFiles = new List<string>();
         static void GetFiles(string root, string base_path)
         {
-            lock (root)
-            {
-                Task.Run(() =>
-                {
 
-                    myDir.AddRange(Directory.GetFiles(root).Select(x=>x.Remove(base_path.Length)));
+
+            myFiles.AddRange(Directory.GetFiles(root).Select(x=>x.Remove(0,base_path.Length)));
 
 
                     for (int i = 0; i < Directory.GetDirectories(root).Length; i++)
                     {
                         GetFiles(Directory.GetDirectories(root)[i], base_path);
                     }
-                });
-            }
+
         }
 
         public static void Synchronize(string root, string base_path)
         {
-            files = new ServiceReference1.StorrageServiceClient().SearchFiles().Files.ToList();
+            
+            files = new ServiceReference1.StorrageServiceClient().SearchFiles(root).Files.ToList();
             GetFiles(root, base_path);
 
 
-            for (int i = 0; i < files.Count; i++)
+            for (int i = 0; i < myFiles.Count; i++)
             {
-                if (!files.Select(x => x.Name).ToList().Contains(myDir[i]))
+                if (!files.Select(x => x.Name).ToList().Contains(myFiles[i]))
                 {
-                    File.Delete(myDir[i]);
+                    File.Delete(base_path + myFiles[i]);
                 }
             }
 
-            for (int i = 0; i < myDir.Count; i++)
+            for (int i = 0; i < files.Count; i++)
             {
-                if (!myDir.Contains(files[i].Name))
+                if (!myFiles.Contains(files[i].Name))
                 {
-                    File.WriteAllBytes(files[i].Name, files[i].Bytes);
+                    File.WriteAllBytes(base_path + files[i].Name, files[i].Bytes);
                 }
             }
         }

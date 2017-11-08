@@ -147,7 +147,9 @@
   </xs:element>
   <xs:element name="SearchFiles">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="path" nillable="true" type="xs:string" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SearchFilesResponse">
@@ -159,7 +161,9 @@
   </xs:element>
   <xs:element name="SearchDirectories">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="path" nillable="true" type="xs:string" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SearchDirectoriesResponse">
