@@ -83,14 +83,13 @@ namespace MyDriveWPF
             base_address = @"D:\root\UserFolder\";
 
             Current_path = user.Login;
-
             if (!Directory.Exists(Current_path)) Directory.CreateDirectory(Current_path);
 
-            SyncDirectory.Synchronize(base_address+Current_path, base_address);
-            SyncFile.Synchronize(base_address+Current_path, base_address);
-            
+               SyncDirectory.Synchronize(base_address+Current_path, base_address);
+               SyncFile.Synchronize(base_address+Current_path, base_address);
 
-            All = InitializeListView(base_address + Current_path);
+
+             All = InitializeListView(base_address + Current_path);
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)

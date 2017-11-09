@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:3729/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MyDriveService" />
-  <xs:import schemaLocation="http://localhost:3729/Service1.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="UserRegistration">
     <xs:complexType>
       <xs:sequence>
@@ -34,7 +33,7 @@
   <xs:element name="Create">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="file" nillable="true" type="q4:ArrayOfunsignedByte" />
+        <xs:element minOccurs="0" name="file" nillable="true" type="xs:base64Binary" />
         <xs:element minOccurs="0" name="path" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -42,7 +41,7 @@
   <xs:element name="CreateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="CreateResult" nillable="true" type="q5:AnswerResponse" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="CreateResult" nillable="true" type="q4:AnswerResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -56,7 +55,7 @@
   <xs:element name="CreateFolderResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="CreateFolderResult" nillable="true" type="q6:AnswerResponse" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="CreateFolderResult" nillable="true" type="q5:AnswerResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -70,14 +69,14 @@
   <xs:element name="DeleteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="DeleteResult" nillable="true" type="q7:AnswerResponse" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="DeleteResult" nillable="true" type="q6:AnswerResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Update">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="file" nillable="true" type="q8:ArrayOfunsignedByte" />
+        <xs:element minOccurs="0" name="file" nillable="true" type="xs:base64Binary" />
         <xs:element minOccurs="0" name="path" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -85,7 +84,7 @@
   <xs:element name="UpdateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="UpdateResult" nillable="true" type="q9:AnswerResponse" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="UpdateResult" nillable="true" type="q7:AnswerResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -99,7 +98,7 @@
   <xs:element name="ReadResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="ReadResult" nillable="true" type="q10:AnswerResponse" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="ReadResult" nillable="true" type="q8:AnswerResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -113,7 +112,7 @@
   <xs:element name="ReadAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="ReadAllResult" nillable="true" type="q11:AnswerResponse" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="ReadAllResult" nillable="true" type="q9:AnswerResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -155,7 +154,7 @@
   <xs:element name="SearchFilesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="SearchFilesResult" nillable="true" type="q12:AnswerResponse" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="SearchFilesResult" nillable="true" type="q10:AnswerResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -169,7 +168,7 @@
   <xs:element name="SearchDirectoriesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="SearchDirectoriesResult" nillable="true" type="q13:AnswerResponse" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="SearchDirectoriesResult" nillable="true" type="q11:AnswerResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -183,7 +182,7 @@
   <xs:element name="OpenFolderResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="OpenFolderResult" nillable="true" type="q14:AnswerResponse" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="OpenFolderResult" nillable="true" type="q12:AnswerResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -198,7 +197,7 @@
   <xs:element name="RenameFolderResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="RenameFolderResult" nillable="true" type="q15:AnswerResponse" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/MyDriveService" minOccurs="0" name="RenameFolderResult" nillable="true" type="q13:AnswerResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

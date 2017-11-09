@@ -32,7 +32,7 @@ namespace MyDriveWPF
             var userAnswer = client.UserAuth(loginBox.Text, passwordBox.Password);
             if (userAnswer.Code == ServiceReference1.AnswerCode.Complete)
             {
-                mainWindow._User = userAnswer._User;
+               mainWindow._User = userAnswer._User;
             
                 this.Close();
             }

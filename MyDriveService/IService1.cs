@@ -118,7 +118,7 @@ namespace MyDriveService
     {
 
         [OperationContract]
-        AnswerResponse Create(List<byte> file, string path);
+        AnswerResponse Create(byte[] file, string path);
 
         [OperationContract]
         AnswerResponse CreateFolder(string path);
@@ -127,7 +127,7 @@ namespace MyDriveService
         AnswerResponse Delete(string name);
 
         [OperationContract]
-        AnswerResponse Update(List<byte> file, string path);
+        AnswerResponse Update(byte[] file, string path);
 
         [OperationContract]
         AnswerResponse Read(string path);

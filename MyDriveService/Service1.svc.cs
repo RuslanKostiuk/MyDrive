@@ -52,7 +52,7 @@ namespace MyDriveService
             }
         }
 
-        public AnswerResponse Create(List<byte> file, string path)
+        public AnswerResponse Create(byte[] file, string path)
         {
 
             try
@@ -115,7 +115,7 @@ namespace MyDriveService
                     AnswerCode.Complete,
                     new StorageFile()
                     {
-                        Bytes = File.ReadAllBytes(path).ToList(),
+                        Bytes = File.ReadAllBytes(path),
                         Name = path
                     },
                     "All data in your disk read succesfuly"
@@ -126,7 +126,18 @@ namespace MyDriveService
         {
             List<string> data = new List<string>();
             List<StorageFile> files = new List<StorageFile>();
-            this.FindFiles(path, data);
+            this.FindFiles(base_address+path, data);
+
+
+            for (int i = 0; i < data.Count(); i++)
+            {
+                files.Add(
+                        new StorageFile()
+                        {
+                            Name = data[i],
+                            Bytes = File.ReadAllBytes(base_address+ data[i])
+                        });
+            }
 
             return AnswerResponceSetter.SetResponse(
                 AnswerCode.Complete,
@@ -139,7 +150,7 @@ namespace MyDriveService
         {
             List<string> data = new List<string>();
             List<StorageFile> files = new List<StorageFile>();
-            this.FindDirectories(path, data);
+            this.FindDirectories(base_address+path, data);
 
             for (int i = 0; i < data.Count(); i++)
             {
@@ -186,10 +197,10 @@ namespace MyDriveService
         }
 
 
-        public AnswerResponse Update(List<byte> file, string path)
+        public AnswerResponse Update(byte[] file, string path)
         {
             FileStream stream = File.Create(path);
-            stream.Write(file.ToArray(), 0, file.Count);
+            stream.Write(file, 0, file.Length);
             stream.Dispose();
             return AnswerResponceSetter.SetResponse(AnswerCode.Complete, "");
         }

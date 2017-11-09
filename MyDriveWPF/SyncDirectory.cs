@@ -26,7 +26,7 @@ namespace MyDriveWPF
 
         public static void Synchronize(string root, string base_path)
         {
-            directories = new ServiceReference1.StorrageServiceClient().SearchDirectories(root).Files.ToList();
+            directories = new ServiceReference1.StorrageServiceClient().SearchDirectories(root.Remove(0,base_path.Length)).Files.ToList();
             GetDirectories(root, base_path);
 
 

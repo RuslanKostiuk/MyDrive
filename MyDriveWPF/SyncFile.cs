@@ -28,7 +28,7 @@ namespace MyDriveWPF
         public static void Synchronize(string root, string base_path)
         {
             
-            files = new ServiceReference1.StorrageServiceClient().SearchFiles(root).Files.ToList();
+            files = new ServiceReference1.StorrageServiceClient().SearchFiles(root.Remove(0, base_path.Length)).Files.ToList();
             GetFiles(root, base_path);
 
 
@@ -44,7 +44,7 @@ namespace MyDriveWPF
             {
                 if (!myFiles.Contains(files[i].Name))
                 {
-                    File.WriteAllBytes(base_path + files[i].Name, files[i].Bytes);
+                    File.WriteAllBytes(base_path + files[i].Name, files[i].Bytes.ToArray());
                 }
             }
         }
