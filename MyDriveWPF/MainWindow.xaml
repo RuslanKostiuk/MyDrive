@@ -16,16 +16,7 @@
             <RowDefinition Height="261*"/>
             <RowDefinition Height="34"/>
         </Grid.RowDefinitions>
-        <Menu HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="182">
-            <MenuItem Header="File">
-                <MenuItem Header="Create"/>
-                <MenuItem Header="Export"/>
-                <MenuItem Header="Import"/>
-                <Separator></Separator>
-                <MenuItem Header="Exit"/>
-            </MenuItem>
-            <MenuItem Header="About us"/>
-        </Menu>
+        <Button Name="up" Click="up_Click" Margin="0,0,91,0" >UP</Button>
         <ListView Grid.Row="1" x:Name="listView" ItemsSource="{Binding All}" MouseDoubleClick="ListView_MouseDoubleClick" Grid.ColumnSpan="2" Margin="0,0,0,34" Grid.RowSpan="2" SelectionChanged="listView_SelectionChanged">
             <ListView.ContextMenu>
                 <ContextMenu>
@@ -35,7 +26,7 @@
                 </ContextMenu>
             </ListView.ContextMenu>
         </ListView>
-        <TextBox Grid.Column="1"  TextWrapping="Wrap" Text="{Binding  Current_path}"/>
+        <TextBox  TextWrapping="Wrap" Text="{Binding  Current_path}" Grid.ColumnSpan="2" Margin="91,0,0,0"/>
         <TextBox Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Name="RenameBox"/>
         <Button Grid.Column="0" Grid.Row="2" Content="Rename:" FontSize="22" Click="Button_Click"/>
     </Grid>

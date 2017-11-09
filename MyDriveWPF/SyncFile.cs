@@ -27,26 +27,33 @@ namespace MyDriveWPF
 
         public static void Synchronize(string root, string base_path)
         {
+           
+                Task.Run(() =>
+                {
+                    lock (new object())
+                    {
+                        files = new ServiceReference1.StorrageServiceClient().SearchFiles(root.Remove(0, base_path.Length)).Files.ToList();
+                        GetFiles(root, base_path);
+
+
+                        //for (int i = 0; i < myFiles.Count; i++)
+                        //{
+                        //    if (!files.Select(x => x.Name).ToList().Contains(myFiles[i]))
+                        //    {
+                        //        File.Delete(base_path + myFiles[i]);
+                        //    }
+                        //}
+
+                        for (int i = 0; i < files.Count; i++)
+                        {
+                            if (!myFiles.Contains(files[i].Name))
+                            {
+                                File.WriteAllBytes(base_path + files[i].Name, files[i].Bytes.ToArray());
+                            }
+                        }
+                    }
+                });
             
-            files = new ServiceReference1.StorrageServiceClient().SearchFiles(root.Remove(0, base_path.Length)).Files.ToList();
-            GetFiles(root, base_path);
-
-
-            for (int i = 0; i < myFiles.Count; i++)
-            {
-                if (!files.Select(x => x.Name).ToList().Contains(myFiles[i]))
-                {
-                    File.Delete(base_path + myFiles[i]);
-                }
-            }
-
-            for (int i = 0; i < files.Count; i++)
-            {
-                if (!myFiles.Contains(files[i].Name))
-                {
-                    File.WriteAllBytes(base_path + files[i].Name, files[i].Bytes.ToArray());
-                }
-            }
         }
     }
 }

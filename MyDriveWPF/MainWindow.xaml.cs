@@ -26,6 +26,8 @@ namespace MyDriveWPF
     {
         ServiceReference1.User user = new ServiceReference1.User();
 
+        FileSystemWatcher fw;
+
         public ServiceReference1.User _User
         {
             get { return user; }
@@ -85,11 +87,27 @@ namespace MyDriveWPF
             Current_path = user.Login;
             if (!Directory.Exists(Current_path)) Directory.CreateDirectory(Current_path);
 
-               SyncDirectory.Synchronize(base_address+Current_path, base_address);
-               SyncFile.Synchronize(base_address+Current_path, base_address);
+            SyncDirectory.Synchronize(base_address+Current_path, base_address);
+            SyncFile.Synchronize(base_address+Current_path, base_address);
 
-
+            fw = new FileSystemWatcher(base_address + Current_path);
+            fw.Changed += Fw_Changed;
+            fw.Created += Fw_Changed;
+            fw.Deleted += Fw_Changed;
+            fw.Renamed += Fw_Renamed;
+            fw.EnableRaisingEvents = true;
              All = InitializeListView(base_address + Current_path);
+        }
+
+        private void Fw_Renamed(object sender, RenamedEventArgs e)
+        {
+            MessageBox.Show("Work");
+        }
+
+        private void Fw_Changed(object sender, FileSystemEventArgs e)
+        {
+            All = InitializeListView(base_address + Current_path);
+            clientStorrage.Update(File.ReadAllBytes(e.FullPath), e.FullPath.Remove(0, base_address.Length));
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -153,11 +171,22 @@ namespace MyDriveWPF
                 MessageBox.Show("Chose File or Directory");
             }
         }
+
+        private void up_Click(object sender, RoutedEventArgs e)
+        {
+         
+                Current_path = System.IO.Path.GetDirectoryName(Current_path);
+                All = InitializeListView(base_address + Current_path);
+                fw.Path = base_address + Current_path;
+
+        }
+
         private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             string path = base_address + Current_path+"\\" + listView.SelectedItem.ToString();
             if (Directory.Exists(path)){
                 All = InitializeListView(path);
+                fw.Path = base_address + Current_path;
             }
             else
             {
