@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -52,6 +53,7 @@ namespace MyDriveService
 
     public static class AnswerResponceSetter
     {
+        public static string base_address = @"D:\root\UserFolder\";
 
         public static AnswerUserResponse SetUserResponse(AnswerCode code, User user, string message)
         {
@@ -76,6 +78,12 @@ namespace MyDriveService
             AnswerResponse response = new AnswerResponse();
             response.Code = code;
             response.Files.AddRange(files);
+
+            for(int i = 0; i< files.Count; i++)
+            {
+                files[i].Date = File.GetLastWriteTime(base_address+files[i].Name);
+            }
+
             response.Message = message;
             return response;
         }
@@ -86,6 +94,7 @@ namespace MyDriveService
             response.Code = code;
             response.Files.Add(file);
             response.Message = message;
+            file.Date = File.GetLastWriteTime(base_address + file.Name);
             return response;
         }
 

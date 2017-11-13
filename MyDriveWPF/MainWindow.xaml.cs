@@ -101,13 +101,20 @@ namespace MyDriveWPF
 
         private void Fw_Renamed(object sender, RenamedEventArgs e)
         {
-            MessageBox.Show("Work");
+            //if (File.Exists(e.FullPath))
+            //{
+            //    clientStorrage.Update(File.ReadAllBytes(e.FullPath), e.FullPath.Remove(0, base_address.Length));
+            //}
+            //else
+            //{
+            //    clientStorrage.Update(null, e.FullPath.Remove(0, base_address.Length));
+            //}
         }
+
 
         private void Fw_Changed(object sender, FileSystemEventArgs e)
         {
             All = InitializeListView(base_address + Current_path);
-            clientStorrage.Update(File.ReadAllBytes(e.FullPath), e.FullPath.Remove(0, base_address.Length));
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)

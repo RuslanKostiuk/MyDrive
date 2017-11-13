@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MyDriveWPF
@@ -36,13 +37,13 @@ namespace MyDriveWPF
                         GetDirectories(root, base_path);
 
 
-                        //for (int i = 0; i < myDir.Count; i++)
-                        //{
-                        //    if (!directories.Select(x => x.Name).ToList().Contains(myDir[i]))
-                        //    {
-                        //        Directory.Delete(base_path + myDir[i]);
-                        //    }
-                        //}
+                        for (int i = 0; i < myDir.Count; i++)
+                        {
+                            if (!directories.Select(x => x.Name).ToList().Contains(myDir[i]))
+                            {
+                                Directory.Delete(base_path + myDir[i]);
+                            }
+                        }
 
                         for (int i = 0; i < directories.Count; i++)
                         {
@@ -52,6 +53,7 @@ namespace MyDriveWPF
                             }
                         }
                     }
+                    Thread.Sleep(1000 * 60);
                 });
             
         }

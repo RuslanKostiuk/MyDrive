@@ -16,6 +16,9 @@ namespace MyDriveService
 
         [DataMember]
         public byte[] Bytes;
+
+        [DataMember]
+        public DateTime Date { get; set; }
     }
 
     
