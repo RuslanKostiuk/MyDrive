@@ -199,9 +199,6 @@ namespace MyDriveService
 
         public AnswerResponse Update(byte[] file, string path)
         {
-            FileStream stream = File.Create(path);
-            stream.Write(file, 0, file.Length);
-            stream.Dispose();
             return AnswerResponceSetter.SetResponse(AnswerCode.Complete, "");
         }
 

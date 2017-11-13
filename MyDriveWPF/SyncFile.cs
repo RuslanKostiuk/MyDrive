@@ -14,21 +14,17 @@ namespace MyDriveWPF
         static List<string> myFiles = new List<string>();
         static void GetFiles(string root, string base_path)
         {
-
-
             myFiles.AddRange(Directory.GetFiles(root).Select(x=>x.Remove(0,base_path.Length)));
 
-
-                    for (int i = 0; i < Directory.GetDirectories(root).Length; i++)
-                    {
-                        GetFiles(Directory.GetDirectories(root)[i], base_path);
-                    }
+            for (int i = 0; i < Directory.GetDirectories(root).Length; i++)
+            {
+                GetFiles(Directory.GetDirectories(root)[i], base_path);
+            }
 
         }
 
         public static void Synchronize(string root, string base_path)
         {
-           
                 Task.Run(() =>
                 {
                     lock (new object())
@@ -55,7 +51,6 @@ namespace MyDriveWPF
                     }
                     Thread.Sleep(1000 * 60);
                 });
-            
         }
     }
 }
