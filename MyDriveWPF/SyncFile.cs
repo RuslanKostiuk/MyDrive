@@ -29,27 +29,31 @@ namespace MyDriveWPF
                 {
                     lock (new object())
                     {
-                        files = new ServiceReference1.StorrageServiceClient().SearchFiles(root.Remove(0, base_path.Length)).Files.ToList();
-                        GetFiles(root, base_path);
-
-
-                        for (int i = 0; i < myFiles.Count; i++)
+                        while (true)
                         {
-                            if (!files.Select(x => x.Name).ToList().Contains(myFiles[i]))
-                            {
-                                File.Delete(base_path + myFiles[i]);
-                            }
-                        }
+                            files = new ServiceReference1.StorrageServiceClient().SearchFiles(root.Remove(0, base_path.Length)).Files.ToList();
+                            GetFiles(root, base_path);
 
-                        for (int i = 0; i < files.Count; i++)
-                        {
-                            if (!myFiles.Contains(files[i].Name)|| files[i].Date !=  File.GetLastWriteTime(myFiles.Where(file=>file == files[i].Name).First()))
+
+                            for (int i = 0; i < myFiles.Count; i++)
                             {
-                                File.WriteAllBytes(base_path + files[i].Name, files[i].Bytes.ToArray());
+                                if (!files.Select(x => x.Name).ToList().Contains(myFiles[i]))
+                                {
+                                    File.Delete(base_path + myFiles[i]);
+                                }
                             }
+
+                            for (int i = 0; i < files.Count; i++)
+                            {
+                                if (!myFiles.Contains(files[i].Name) || files[i].Date != File.GetLastWriteTime(myFiles.Where(file => file == files[i].Name).First()))
+                                {
+                                    File.WriteAllBytes(base_path + files[i].Name, files[i].Bytes.ToArray());
+                                }
+                            }
+                            Thread.Sleep(1000 * 60);
                         }
                     }
-                    Thread.Sleep(1000 * 60);
+                  
                 });
         }
     }

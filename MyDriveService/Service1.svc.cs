@@ -199,7 +199,35 @@ namespace MyDriveService
 
         public AnswerResponse Update(byte[] file, string path)
         {
-            return AnswerResponceSetter.SetResponse(AnswerCode.Complete, "");
+            try
+            {
+                if (file == null)
+                {
+                    if (!Directory.Exists(base_address + path))
+                    {
+                        CreateFolder(path);
+                    }
+                    else
+                    {
+                        Delete(path);
+                    }
+                }
+                else
+                {
+                    if (!File.Exists(base_address + path))
+                    {
+                        Create(file, path);
+                    }
+                    else
+                    {
+                        Delete(path);
+                    }
+                }
+               return AnswerResponceSetter.SetResponse(AnswerCode.Complete, path);
+            }catch(Exception ex)
+            {
+              return  AnswerResponceSetter.SetResponse(AnswerCode.Failed, ex.Message);
+            }
         }
 
 

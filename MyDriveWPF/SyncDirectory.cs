@@ -33,27 +33,31 @@ namespace MyDriveWPF
                 {
                     lock (new object())
                     {
-                        directories = new ServiceReference1.StorrageServiceClient().SearchDirectories(root.Remove(0, base_path.Length)).Files.ToList();
-                        GetDirectories(root, base_path);
-
-
-                        for (int i = 0; i < myDir.Count; i++)
+                        while (true)
                         {
-                            if (!directories.Select(x => x.Name).ToList().Contains(myDir[i]))
-                            {
-                                Directory.Delete(base_path + myDir[i]);
-                            }
-                        }
+                            directories = new ServiceReference1.StorrageServiceClient().SearchDirectories(root.Remove(0, base_path.Length)).Files.ToList();
+                            GetDirectories(root, base_path);
 
-                        for (int i = 0; i < directories.Count; i++)
-                        {
-                            if (!myDir.Contains(directories[i].Name))
+
+                            for (int i = 0; i < myDir.Count; i++)
                             {
-                                Directory.CreateDirectory(base_path + directories[i].Name);
+                                if (!directories.Select(x => x.Name).ToList().Contains(myDir[i]))
+                                {
+                                    Directory.Delete(base_path + myDir[i], true);
+                                }
                             }
+
+                            for (int i = 0; i < directories.Count; i++)
+                            {
+                                if (!myDir.Contains(directories[i].Name))
+                                {
+                                    Directory.CreateDirectory(base_path + directories[i].Name);
+                                }
+                            }
+                            Thread.Sleep(1000 * 60);
                         }
                     }
-                    Thread.Sleep(1000 * 60);
+                    
                 });
             
         }

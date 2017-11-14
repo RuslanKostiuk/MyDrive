@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -92,7 +93,10 @@ namespace MyDriveWPF
 
             fw = new FileSystemWatcher(base_address + Current_path);
             fw.Changed += Fw_Changed;
+            fw.Created += Fw_Changed;
+            fw.Deleted += Fw_Changed;
             fw.Renamed += Fw_Renamed;
+            fw.IncludeSubdirectories = true;
             fw.EnableRaisingEvents = true;
              All = InitializeListView(base_address + Current_path);
         }
@@ -108,11 +112,20 @@ namespace MyDriveWPF
 
         private void Fw_Changed(object sender, FileSystemEventArgs e)
         {
-            if (File.Exists(e.FullPath))
-                clientStorrage.Update(File.ReadAllBytes(e.FullPath), e.FullPath.Remove(0, base_address.Length));
-            else
-                clientStorrage.Update(null, e.FullPath.Remove(0, base_address.Length));
-            All = InitializeListView(base_address + Current_path);
+            //Task.Run(() =>
+            //{
+            //    Thread.Sleep(2000);
+            //    if (File.Exists(e.FullPath))
+            //    {
+            //        clientStorrage.Update(File.ReadAllBytes(e.FullPath), e.FullPath.Remove(0, base_address.Length));
+            //    }
+            //    else
+            //    {
+            //        clientStorrage.Update(null, e.FullPath.Remove(0, base_address.Length));
+            //    }
+            //    All = InitializeListView(base_address + Current_path);
+            //});
+            MessageBox.Show(e.FullPath);
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -144,7 +157,7 @@ namespace MyDriveWPF
             File.Create(base_address + Current_path + "\\" + str);
 
             clientStorrage.Create(null, current_path + "\\" + str);
-            All = InitializeListView(Current_path);
+            All = InitializeListView(base_address + Current_path);
         }
 
         private void MenuDelete_Click(object sender, RoutedEventArgs e)
@@ -163,7 +176,7 @@ namespace MyDriveWPF
                 {
                     if (MessageBox.Show("are you sure you want delete this directory?", "Delete directory", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
-                        Directory.Delete(path);
+                        Directory.Delete(path,true);
                     }
                 }
 
