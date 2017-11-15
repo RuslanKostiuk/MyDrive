@@ -209,10 +209,12 @@ namespace MyDriveWPF
 
         private void up_Click(object sender, RoutedEventArgs e)
         {
-         
+
+            if (Current_path.Length > this._User.Login.Length)
+            {
                 Current_path = System.IO.Path.GetDirectoryName(Current_path);
                 All = InitializeListView(base_address + Current_path);
-
+            }
         }
 
         private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)

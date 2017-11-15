@@ -58,7 +58,7 @@ namespace MyDriveService
             try
             {
 
-                File.Create(base_address + path);
+                File.Create(base_address + path, file.Length, FileOptions.Asynchronous);
                 
                 return AnswerResponceSetter.SetResponse(
                     AnswerCode.Complete,
