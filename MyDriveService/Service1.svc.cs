@@ -201,27 +201,16 @@ namespace MyDriveService
         {
             try
             {
-                if (file == null)
+                bool b = true;
+                while (b)
                 {
-                    if (!Directory.Exists(base_address + path))
+                    try
                     {
-                        CreateFolder(path);
+                        File.WriteAllBytes(base_address + path, file);
+                        b = false;
                     }
-                    else
-                    {
-                        Delete(path);
-                    }
-                }
-                else
-                {
-                    if (!File.Exists(base_address + path))
-                    {
-                        Create(file, path);
-                    }
-                    else
-                    {
-                        Delete(path);
-                    }
+                    catch { }
+                    
                 }
                return AnswerResponceSetter.SetResponse(AnswerCode.Complete, path);
             }catch(Exception ex)

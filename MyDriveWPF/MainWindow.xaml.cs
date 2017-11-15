@@ -93,15 +93,33 @@ namespace MyDriveWPF
 
             fw = new FileSystemWatcher(base_address + Current_path);
             fw.Changed += Fw_Changed;
-            fw.Created += Fw_Changed;
-            fw.Deleted += Fw_Changed;
+            fw.Created += Fw_Created;
+            fw.Deleted += Fw_Deleted; ;
             fw.Renamed += Fw_Renamed;
             fw.IncludeSubdirectories = true;
             fw.EnableRaisingEvents = true;
              All = InitializeListView(base_address + Current_path);
+           
         }
 
+        private void Fw_Deleted(object sender, FileSystemEventArgs e)
+        {
 
+                clientStorrage.Delete(e.FullPath.Remove(0, base_address.Length));
+    
+        }
+
+        private void Fw_Created(object sender, FileSystemEventArgs e)
+        {
+            if (Directory.Exists(e.FullPath))
+            {
+                clientStorrage.CreateFolder(e.FullPath.Remove(0, base_address.Length));
+            }
+            else
+            {
+                clientStorrage.Create(null,e.FullPath.Remove(0, base_address.Length));
+            }
+        }
 
         private void Fw_Renamed(object sender, RenamedEventArgs e)
         {
@@ -112,21 +130,21 @@ namespace MyDriveWPF
 
         private void Fw_Changed(object sender, FileSystemEventArgs e)
         {
-            //Task.Run(() =>
-            //{
-            //    Thread.Sleep(2000);
-            //    if (File.Exists(e.FullPath))
-            //    {
-            //        clientStorrage.Update(File.ReadAllBytes(e.FullPath), e.FullPath.Remove(0, base_address.Length));
-            //    }
-            //    else
-            //    {
-            //        clientStorrage.Update(null, e.FullPath.Remove(0, base_address.Length));
-            //    }
-            //    All = InitializeListView(base_address + Current_path);
-            //});
-            MessageBox.Show(e.FullPath);
+            bool b = true;
+            while (b)
+            {
+                try
+                {
+                    if (File.Exists(e.FullPath))
+                        clientStorrage.Update(File.ReadAllBytes(e.FullPath), e.FullPath.Remove(0, base_address.Length));
+                    b = false;
+                }
+                catch { }
+            }
+
         }
+
+      
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -194,7 +212,6 @@ namespace MyDriveWPF
          
                 Current_path = System.IO.Path.GetDirectoryName(Current_path);
                 All = InitializeListView(base_address + Current_path);
-                fw.Path = base_address + Current_path;
 
         }
 

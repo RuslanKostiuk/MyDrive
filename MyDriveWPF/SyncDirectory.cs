@@ -43,7 +43,11 @@ namespace MyDriveWPF
                             {
                                 if (!directories.Select(x => x.Name).ToList().Contains(myDir[i]))
                                 {
-                                    Directory.Delete(base_path + myDir[i], true);
+                                    try
+                                    {
+                                        Directory.Delete(base_path + myDir[i], true);
+                                    }
+                                    catch { }
                                 }
                             }
 

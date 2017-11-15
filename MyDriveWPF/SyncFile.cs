@@ -39,7 +39,11 @@ namespace MyDriveWPF
                             {
                                 if (!files.Select(x => x.Name).ToList().Contains(myFiles[i]))
                                 {
-                                    File.Delete(base_path + myFiles[i]);
+                                    try
+                                    {
+                                        File.Delete(base_path + myFiles[i]);
+                                    }
+                                    catch { }
                                 }
                             }
 
