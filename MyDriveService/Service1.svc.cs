@@ -10,7 +10,7 @@ using System.Text;
 
 namespace MyDriveService
 {
-    
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
     public class AccessService : IAccessService,IStorrageService
     {
         static string connStr = ConfigurationManager.ConnectionStrings["MyDriveCS"].ConnectionString;
