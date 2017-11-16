@@ -33,3 +33,21 @@ C:\Users\wds\Desktop\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.csproj.GenerateReso
 C:\Users\wds\Desktop\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.csproj.CoreCompileInputs.cache
 C:\Users\wds\Desktop\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.exe
 C:\Users\wds\Desktop\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.pdb
+C:\Users\wds\Desktop\workVersion\MyDrive\MyDriveWPF\bin\Debug\MyDriveWPF.exe.config
+C:\Users\wds\Desktop\workVersion\MyDrive\MyDriveWPF\bin\Debug\MyDriveWPF.exe
+C:\Users\wds\Desktop\workVersion\MyDrive\MyDriveWPF\bin\Debug\MyDriveWPF.pdb
+C:\Users\wds\Desktop\workVersion\MyDrive\MyDriveWPF\obj\Debug\MainWindow.g.cs
+C:\Users\wds\Desktop\workVersion\MyDrive\MyDriveWPF\obj\Debug\Sign In Window.g.cs
+C:\Users\wds\Desktop\workVersion\MyDrive\MyDriveWPF\obj\Debug\Window1.g.cs
+C:\Users\wds\Desktop\workVersion\MyDrive\MyDriveWPF\obj\Debug\App.g.cs
+C:\Users\wds\Desktop\workVersion\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF_MarkupCompile.cache
+C:\Users\wds\Desktop\workVersion\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF_MarkupCompile.lref
+C:\Users\wds\Desktop\workVersion\MyDrive\MyDriveWPF\obj\Debug\MainWindow.baml
+C:\Users\wds\Desktop\workVersion\MyDrive\MyDriveWPF\obj\Debug\Sign In Window.baml
+C:\Users\wds\Desktop\workVersion\MyDrive\MyDriveWPF\obj\Debug\Window1.baml
+C:\Users\wds\Desktop\workVersion\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.g.resources
+C:\Users\wds\Desktop\workVersion\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.Properties.Resources.resources
+C:\Users\wds\Desktop\workVersion\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.csproj.GenerateResource.Cache
+C:\Users\wds\Desktop\workVersion\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.csproj.CoreCompileInputs.cache
+C:\Users\wds\Desktop\workVersion\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.exe
+C:\Users\wds\Desktop\workVersion\MyDrive\MyDriveWPF\obj\Debug\MyDriveWPF.pdb

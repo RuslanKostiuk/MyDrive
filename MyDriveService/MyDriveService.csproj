@@ -49,6 +49,9 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Selectors" />
+    <Reference Include="System.IdentityModel.Services" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -74,6 +77,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomUserNamePasswordValidator.cs" />
     <Compile Include="DataBaseClass.cs" />
     <Compile Include="StorageFile.cs" />
     <Compile Include="Service1.svc.cs">

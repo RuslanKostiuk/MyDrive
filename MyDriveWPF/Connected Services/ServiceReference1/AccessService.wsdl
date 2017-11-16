@@ -29,11 +29,11 @@
                           <wsp:Policy>
                             <sp:ProtectionToken>
                               <wsp:Policy>
-                                <sp:SpnegoContextToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                                <mssp:SslContextToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient" xmlns:mssp="http://schemas.microsoft.com/ws/2005/07/securitypolicy">
                                   <wsp:Policy>
                                     <sp:RequireDerivedKeys />
                                   </wsp:Policy>
-                                </sp:SpnegoContextToken>
+                                </mssp:SslContextToken>
                               </wsp:Policy>
                             </sp:ProtectionToken>
                             <sp:AlgorithmSuite>
@@ -51,6 +51,15 @@
                             <sp:OnlySignEntireHeadersAndBody />
                           </wsp:Policy>
                         </sp:SymmetricBinding>
+                        <sp:SignedSupportingTokens>
+                          <wsp:Policy>
+                            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                              <wsp:Policy>
+                                <sp:WssUsernameToken10 />
+                              </wsp:Policy>
+                            </sp:UsernameToken>
+                          </wsp:Policy>
+                        </sp:SignedSupportingTokens>
                         <sp:Wss11>
                           <wsp:Policy />
                         </sp:Wss11>
@@ -466,7 +475,11 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:3729/Service1.svc/auth</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Ruslan\Ruslanchik</Upn>
+          <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+            <X509Data>
+              <X509Certificate>MIIEsDCCApigAwIBAgIQYHclPV8kCqJFflOvbWDVfjANBgkqhkiG9w0BAQUFADAUMRIwEAYDVQQDEwlsb2NhbGhvc3QwHhcNMTcxMTA4MjIwMDAwWhcNMjcxMTE1MjIwMDAwWjAUMRIwEAYDVQQDEwlsb2NhbGhvc3QwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQDcoLC5YP37sW5gNP5SjAWLsxMTgbw7DpDkJ5/peMvpBTxxo7iTsaDspYRv6kVVTMyfPa0ejB3DX/RbKuKz6+j6wlJWBbXPkSc89IItpgPjqwEi9iA1t08T38Sehss39Mc4tEfhlH+MwwnGktyz/Q+iSfyXpWLpZn7CrYoy65+j3TG3VbaD0/TCkJMEEJDGlosJpt2Vl289Rpwf+OWnFN56Vx41Npss+LM5v7+LIeoKBTd/veqOU+So4fmbufdOGWZB3NF4vJJaYCypDtvvsGLS9tJeYB7mIscErk0j9yzWeNCrMkL79OLAXyp9Q49/R1mTIKfhoTKzaBLPRdG0F6WRmoHDZUlI7nBhjql5USGn/NmloP6plAqN+QoGxIDdPbLnUQM2k9tOLyP6ItvuQhgsx7kh6cExZ7BTY6+/2V5EyKf6LqP6wo78lwo7CsAqw2+GNr/v4h7saeoLpUbrea7E2ypsPHEqbUjYxdGsn5vj5B00WYQVzxPupNMAS8Qv9QJjm9ZU9B1r10ubmuFZur0+8KgbZOWMJSQbeBZfDjgE6eobQSSi1u/hCDl+ZD9WDZilFde/RvwbE8WdyJQejG2pkVfivxU3SYkaMOh32tV4tPyy0Xby08oka5NOaIwekliI7qdWC9sYv9R3wshE0JUsen0GGVQFO0EehKyhR6zqkQIDAQABMA0GCSqGSIb3DQEBBQUAA4ICAQCiMkVYE6hGoWued0QeT2EmOqxerAejoFm38gzt7O+Vr7ZuM9UPRX75LJTYDvlNvXF5SXjb897jBxq72SfhQWh1ybQarWj6FbAljp/CmW43Bi+nFDy20bUqn808mfSi2VgNwpRuGuOzHjutn2fyCLkXqv0gdCLypgwGfK5L1I7tgdg0w5PmPi62xCBxr+RVeZW/gbYK7G2ZEvzcc0IULJ/y8mKpw8MEGJtchRemVssAYmvnpCNcxIrdtPxArgBYVM+vgcjqplz+qGfHv3BqhAW+cTIP74+WA8+R8xTxi6prwDioY/khY559dMLcSZLtphiorgk4I+aVBbHGKOq2SzxfbpK2WRDCNAECSd+9LL0qpAtHHNzyC0pa0/BusxBvr+gZm5RBzqlGTPkDYs0GHBrG6tErD+CMNoUGSHRDZ5gl5czVnJn4n17Q8XcU5pTcsVkP2UU3R8HAfkI4X/lKCYbfAHcnDTvlrzmN8tcTrUd4b+AoYXbcpC2wQTjoR942wmfwY3n6rpz/UH4XlSP2VKXfEL6/iIXVuLv9vbK5jIoFVa0dDy3HrkVhkaUm01hhDkLg2dxxEIxrTcuSWe9PvgJOE/nZEBkkmbuyBj5iQx9wJASxUOCqMLCV3ZQdQZ0r/vzNyRH1bJxoZxnJHtRKW7MwAmwnSYnqxPi3MnxTfDOagA==</X509Certificate>
+            </X509Data>
+          </KeyInfo>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ServiceModel.Security;
+using System.IdentityModel;
 
 namespace MyDriveWPF
 {
@@ -29,7 +31,12 @@ namespace MyDriveWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            client.ClientCredentials.UserName.UserName = loginBox.Text;
+            client.ClientCredentials.UserName.Password = passwordBox.Password;
+            client.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.None;
+
             var userAnswer = client.UserAuth(loginBox.Text, passwordBox.Password);
+
             if (userAnswer.Code == ServiceReference1.AnswerCode.Complete)
             {
                mainWindow._User = userAnswer._User;
