@@ -106,7 +106,7 @@ namespace MyDriveWPF
         {
 
                 clientStorrage.Delete(e.FullPath.Remove(0, base_address.Length));
-    
+            All = InitializeListView(base_address + Current_path);
         }
 
         private void Fw_Created(object sender, FileSystemEventArgs e)
@@ -119,6 +119,7 @@ namespace MyDriveWPF
             {
                 clientStorrage.Create(null,e.FullPath.Remove(0, base_address.Length));
             }
+            All = InitializeListView(base_address + Current_path);
         }
 
         private void Fw_Renamed(object sender, RenamedEventArgs e)
@@ -141,7 +142,7 @@ namespace MyDriveWPF
                 }
                 catch { }
             }
-
+            All = InitializeListView(base_address + Current_path);
         }
 
       
